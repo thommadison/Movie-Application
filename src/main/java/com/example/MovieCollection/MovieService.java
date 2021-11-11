@@ -8,24 +8,33 @@ import java.util.List;
 
 @Service
 public class MovieService {
-        private List<Movie> movies = new ArrayList<>(Arrays.asList(
-                new Movie("1", "Toy Story 4", "Best Animated Feature Film", "2020"),
-                new Movie("2", "How to Train your Dragon: The Hidden World", "Best Animated Feature", "2020"),
-                new Movie("3", "I Lost my Body", "Best Animated Feature Film", "2020"),
-                new Movie("4", "Klaus", "Best Animated Feature Film", "2020"),
-                new Movie("5", "Missing Link", "Best Animated Feature Film", "2020")
-        ));
 
-        public List<Movie> getAllMovies(){
-            return movies;
-        }
+    private List<Movie> movies = new ArrayList<>(Arrays.asList(
+            new Movie("1", "Toy Story 4", "Best Animated Feature Film", "2020"),
+            new Movie("2", "How to Train your Dragon: The Hidden World", "Best Animated Feature", "2020"),
+            new Movie("3", "I Lost my Body", "Best Animated Feature Film", "2020"),
+            new Movie("4", "Klaus", "Best Animated Feature Film", "2020"),
+            new Movie("5", "Missing Link", "Best Animated Feature Film", "2020"),
+            new Movie("6", "Sound of Metal", "Best Film Editing", "2020"),
+            new Movie("7", "The Father", "Best Film Editing", "2020"),
+            new Movie("8", "Nomadland", "Best Film Editing", "2020"),
+            new Movie("9", "Promising Young Woman", "Best Film Editing", "2020"),
+            new Movie("10", "The Trial of the Chicago 7", "Best Film Editing", "2020")
+    ));
 
-        public Movie getMovie(String id){
+    public List<Movie> getAllMovies(){
+        return movies;
+    }
 
-            //iterator over list of topics and return id
-           return  movies.stream().filter(t ->t.getId().equals(id)).findFirst().get();
-        }
+    public Movie getMovie(String id){
 
+        //iterator over list of topics and return id
+        return  movies.stream().filter(t ->t.getId().equals(id)).findFirst().get();
+    }
+
+    public Movie getMovieCategory(String category){
+        return movies.stream().filter(t -> t.getCategory().equals(category)).findAny().get();
+    }
 
     public void addMovie(Movie movie) {
             movies.add(movie);
