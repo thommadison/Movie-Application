@@ -1,28 +1,38 @@
 package com.example.MovieCollection;
 
 public class Movie {
-
-    private String id;
+	private int id;
+	//data can be obtained from .csv file
     private String title;
     private String category;
-    private String year;
+    private int yearReleased;
+    private int yearNominated;
+    private String awardee;
+    private boolean awardStatus;
+    //data can be obtained from external API
+    private String link;
 
-    public Movie(String id, String title, String category, String year) {
+    //constructors
+    //constructor using data from .csv file
+    public Movie(int id, String title, String category, int yearReleased, int yearNominated, String awardee, boolean awardStatus) {
         this.id = id;
         this.title = title;
         this.category = category;
-        this.year = year;
+        this.yearReleased = yearReleased;
+        this.yearNominated = yearNominated;
+        this.awardee = awardee;
+        this.awardStatus = awardStatus;
     }
-
     public Movie() {
 
     }
-
-    public String getId() {
+    
+    //getters & setters
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -42,15 +52,50 @@ public class Movie {
         this.category = category;
     }
 
-    public String getYear() {
-        return year;
-    }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
+	public int getYearNominated() {
+		return yearNominated;
+	}
 
+	public void setYearNominated(int yearNominated) {
+		this.yearNominated = yearNominated;
+	}
 
+	public String getLink() {
+		return link;
+	}
 
+	public void setLink(String link) {
+		this.link = link;
+	}
 
+	public int getYearReleased() {
+		return yearReleased;
+	}
+
+	public void setYearReleased(int yearReleased) {
+		this.yearReleased = yearReleased;
+	}
+
+	public boolean isAwardStatus() {
+		return awardStatus;
+	}
+
+	public void setAwardStatus(boolean awardStatus) {
+		this.awardStatus = awardStatus;
+	}
+
+	public String getAwardee() {
+		return awardee;
+	}
+
+	public void setAwardee(String awardee) {
+		this.awardee = awardee;
+	}
+	public String toString() {
+		return "ID: " + getId() + "\tTitle: " + getTitle()
+				+ "\tCategory: " + getCategory() + "\tReleased: "
+				+ getYearReleased() + "\tNominated: " + getYearNominated()
+				+ "\tAwardee: " + getAwardee() + "\tStatus: " + isAwardStatus();
+	}
 }
