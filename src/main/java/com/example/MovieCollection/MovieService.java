@@ -72,7 +72,26 @@ public class MovieService {
     public void deleteMovie(int id) {
             movies.removeIf(t -> t.getId() == id);
     }
-    
+
+	public List<Movie> getMoviesNominatedForYear(int year) {
+    	List<Movie> list = new ArrayList<Movie>();
+    	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == year).findFirst().get().getId();
+    	Movie temp;
+    	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == year) {
+			Movie mov = new Movie();
+			mov.setTitle(temp.getTitle());
+			mov.setYearNominated(temp.getYearNominated());
+			mov.setYearReleased(temp.getYearReleased());
+			mov.setAwardee(temp.getAwardee());
+			mov.setAwardStatus(temp.isAwardStatus());
+			mov.setId(temp.getId());
+			mov.setCategory(temp.getCategory());
+			list.add(mov);
+    		index++;
+    	}
+    	return list;
+    }
+
     public List<Movie> getCategoryNominationsForYear(String category, int yearNominated) {
     	List<Movie> list = new ArrayList<Movie>();
     	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == yearNominated).findFirst().get().getId();
@@ -93,6 +112,7 @@ public class MovieService {
     	}
     	return list;
     }
+
     public Movie getWinner(String category, int yearNominated) {
     	return movies.stream().filter(t ->t.getYearNominated() == yearNominated && t.getCategory().contains(category) && t.isAwardStatus() == true).findFirst().get();
     }

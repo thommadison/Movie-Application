@@ -50,6 +50,12 @@ public class newMovieController {
     @Autowired
     private MovieService topicService = new MovieService();
 
+	// return all movies within the input year
+	@RequestMapping("/{year}")
+    public List<Movie> getForYear(@PathVariable int year){
+        return topicService.getMoviesNominatedForYear(year);
+    }
+
     //return all movies nominated for the input year
     @RequestMapping("/animated-feature/{year}")
     public List<Movie> getAnimatedNominations(@PathVariable int year){
