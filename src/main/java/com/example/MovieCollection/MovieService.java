@@ -2,39 +2,56 @@ package com.example.MovieCollection;
 
 import org.springframework.stereotype.Service;
 
+import com.opencsv.CSVReader;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class MovieService {
+        private List<Movie> movies = new ArrayList<Movie>();
+        public MovieService() {
+        	initMovieCollection();
+        }
+        public void initMovieCollection() {
+        	String path = "the_oscar_award.csv";
+    		String[] line;
+    		try {
+    			CSVReader csvReader = new CSVReader(new FileReader(path));
+    			line = csvReader.readNext();
+    			int id = 0;
+    			if(line!=null) {
+    				while((line = csvReader.readNext()) != null) {
+    					//0:yearReleased, 1:yearNominated, 3:category, 4:awardee, 5:title, 6:awardStatus
+    					if(line[5] == null)
+    						line[5] = "N/A";
+    					//id, title, category, yearReleased, yearNominated, awardee, status
+    					Movie newMovie = new Movie(id,line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
+    					movies.add(newMovie);
+    					id++;
+    				}
+    			}
+    		} catch(FileNotFoundException e) {
+    			e.printStackTrace();
+    		} catch(IOException e) {
+    			e.printStackTrace();
+    		}
+        }
+        //don't do this unless you want to break something
+        public List<Movie> getAllMovies(){
+            return movies;
+        }
 
-    private List<Movie> movies = new ArrayList<>(Arrays.asList(
-            new Movie("1", "Toy Story 4", "Best Animated Feature Film", "2020"),
-            new Movie("2", "How to Train your Dragon: The Hidden World", "Best Animated Feature", "2020"),
-            new Movie("3", "I Lost my Body", "Best Animated Feature Film", "2020"),
-            new Movie("4", "Klaus", "Best Animated Feature Film", "2020"),
-            new Movie("5", "Missing Link", "Best Animated Feature Film", "2020"),
-            new Movie("6", "Sound of Metal", "Best Film Editing", "2020"),
-            new Movie("7", "The Father", "Best Film Editing", "2020"),
-            new Movie("8", "Nomadland", "Best Film Editing", "2020"),
-            new Movie("9", "Promising Young Woman", "Best Film Editing", "2020"),
-            new Movie("10", "The Trial of the Chicago 7", "Best Film Editing", "2020")
-    ));
+        public Movie getMovie(int id){
 
-    public List<Movie> getAllMovies(){
-        return movies;
-    }
+            //iterator over list of topics and return id
+           return  movies.stream().filter(t ->t.getId() == id).findFirst().get();
+        }
 
-    public Movie getMovie(String id){
-
-        //iterator over list of topics and return id
-        return  movies.stream().filter(t ->t.getId().equals(id)).findFirst().get();
-    }
-
-    public Movie getMovieCategory(String category){
-        return movies.stream().filter(t -> t.getCategory().equals(category)).findAny().get();
-    }
 
     public void addMovie(Movie movie) {
             movies.add(movie);
@@ -42,17 +59,41 @@ public class MovieService {
 
     //loop to compare id to input id
     //if it matches, it will update that id
-    public void updateMovie(String id, Movie movie ){
+    public void updateMovie(int id, Movie movie ){
             for(int i = 0; i < movies.size(); i++){
                 Movie m = movies.get(i);
-                if(m.getId().equals(id)){
+                if(m.getId() == id){
                     movies.set(i, movie);
                     return;
                 }
             }
     }
 
-    public void deleteMovie(String id) {
-            movies.removeIf(t -> t.getId().equals(id));
+    public void deleteMovie(int id) {
+            movies.removeIf(t -> t.getId() == id);
+    }
+    
+    public List<Movie> getCategoryNominationsForYear(String category, int yearNominated) {
+    	List<Movie> list = new ArrayList<Movie>();
+    	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == yearNominated).findFirst().get().getId();
+    	Movie temp;
+    	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == yearNominated) {
+    		if(temp.getCategory().contains(category)) {
+    			Movie mov = new Movie();
+    			mov.setTitle(temp.getTitle());
+    			mov.setYearNominated(temp.getYearNominated());
+    			mov.setYearReleased(temp.getYearReleased());
+    			mov.setAwardee(temp.getAwardee());
+    			mov.setAwardStatus(temp.isAwardStatus());
+    			mov.setId(temp.getId());
+    			mov.setCategory(temp.getCategory());
+    			list.add(mov);
+    		}
+    		index++;
+    	}
+    	return list;
+    }
+    public Movie getWinner(String category, int yearNominated) {
+    	return movies.stream().filter(t ->t.getYearNominated() == yearNominated && t.getCategory().contains(category) && t.isAwardStatus() == true).findFirst().get();
     }
 }
