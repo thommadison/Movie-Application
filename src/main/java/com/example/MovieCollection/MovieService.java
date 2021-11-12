@@ -22,6 +22,7 @@ public class MovieService {
     		String[] line;
     		try {
     			CSVReader csvReader = new CSVReader(new FileReader(path));
+    			//reads line to skip category portion of file
     			line = csvReader.readNext();
     			int id = 0;
     			if(line!=null) {
@@ -75,6 +76,7 @@ public class MovieService {
 
 	public List<Movie> getMoviesNominatedForYear(int year) {
     	List<Movie> list = new ArrayList<Movie>();
+    	//retrieves ID of first Movie that was nominated for that year
     	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == year).findFirst().get().getId();
     	Movie temp;
     	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == year) {
@@ -94,6 +96,7 @@ public class MovieService {
 
     public List<Movie> getCategoryNominationsForYear(String category, int yearNominated) {
     	List<Movie> list = new ArrayList<Movie>();
+    	//retrieves ID of first Movie that was nominated for that year
     	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == yearNominated).findFirst().get().getId();
     	Movie temp;
     	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == yearNominated) {
