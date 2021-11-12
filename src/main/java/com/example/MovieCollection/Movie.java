@@ -92,6 +92,7 @@ public class Movie {
 	public void setAwardee(String awardee) {
 		this.awardee = awardee;
 	}
+    
 	public String toString() {
 		return "ID: " + getId() + "\tTitle: " + getTitle()
 				+ "\tCategory: " + getCategory() + "\tReleased: "
