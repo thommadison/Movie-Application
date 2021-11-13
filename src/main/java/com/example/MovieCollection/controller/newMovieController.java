@@ -51,7 +51,7 @@ public class newMovieController {
     private MovieService topicService = new MovieService();
 
 	// return all movies within the input year
-	@RequestMapping("/{year}")
+	@RequestMapping("/year/{year}")
     public List<Movie> getForYear(@PathVariable int year){
         return topicService.getMoviesNominatedForYear(year);
     }
@@ -73,11 +73,19 @@ public class newMovieController {
     	return topicService.getWinner(FILM_EDITING, year);
     }
     
+	//return individual movie
+	@RequestMapping("/id/{id}")
+    public Movie getAnimatedNominationsWithId( @PathVariable int id) {
+    	return topicService.getMovie(id);
+    }
+    
+	/*	// This RequestMapping overlapped with @RequestMapping("/animated-feature/{year}"), disabled it for now.
     //return individual movie
     @RequestMapping("/animatedfeature/{id}")
     public Movie getMovie(@PathVariable int id){
         return topicService.getMovie(id);
     }
+	*/
 
     //add movie
     @RequestMapping(method = RequestMethod.POST, value ="/animatedfeature/2020")
