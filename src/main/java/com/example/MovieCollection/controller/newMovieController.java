@@ -3,11 +3,14 @@ package com.example.MovieCollection.controller;
 import com.example.MovieCollection.Movie;
 import com.example.MovieCollection.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @RestController
+//@Controller
 @RequestMapping("/awardmovies")
 public class newMovieController {
 
@@ -46,9 +49,16 @@ public class newMovieController {
 	
 	private final static int MIN_NOMINATION_YEAR = 1928;
 	private final static int MAX_NOMINATION_YEAR = 2020;
-	
+
     @Autowired
     private MovieService topicService = new MovieService();
+
+	@RequestMapping("/apiDoc")
+	public ModelAndView getApiDoc(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("apiDoc");
+		return modelAndView;
+	}
 
 	// return all movies within the input year
 	@RequestMapping("/year/{year}")
