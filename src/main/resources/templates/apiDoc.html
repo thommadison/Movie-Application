@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>REST API Documentation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>REST API Documentation</h1>
+    <p>The REST API allows users to obtain information about the movies or categories for oscars Awards.</p>
+    <p>This pages list instructions for the use of the API.</p>
+
+    <h2>Find Nomination by ID</h2>
+    <p><b>http://localhost:8080/awardmovies/id/[id]</b></p>
+    <p>[id]: Valid ID will be integer with a value between 0 and 10394.</p>
+
+    <h2>Find Nomination by year</h2>
+    <p><b>http://localhost:8080/awardmovies/year/[year]</b></p>
+    <p>[year]: Valid year will be integer with a value between 1928 and 2020.</p>
+
+    <h2>Find Nomination by Categories for rewards</h2>
+    <p><b>http://localhost:8080/awardmovies/[categories]/[year]</b></p>
+    <p>[year]: Valid year will be integer with a value between 1928 and 2020.</p>
+    <p>[categories]:</p>
+    <ul>
+        <li>animated-feature</li>
+        <li>costume-design</li>
+        <li>film-editing</li>
+    </ul>
+</body>   
+</html>
