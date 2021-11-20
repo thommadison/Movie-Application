@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class MovieService {
 		@Autowired
-        private MovieRepo repo;
+        private MovieRepo repo; //initialized as null for some reason
 		//@Autowired
 		//private Movie temp;
 		private List<Movie> movies = new ArrayList<Movie>();
