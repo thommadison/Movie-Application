@@ -51,7 +51,7 @@ public class newMovieController {
 	private final static int MAX_NOMINATION_YEAR = 2020;
 
     @Autowired
-    private MovieService topicService = new MovieService();
+    private MovieService topicService;
 
 	@RequestMapping("/apiDoc")
 	public ModelAndView getApiDoc(){

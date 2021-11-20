@@ -1,15 +1,25 @@
 package com.example.MovieCollection;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.springframework.beans.factory.annotation.Configurable;
+
+@Configurable
+@Entity
 public class Movie {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	//data can be obtained from .csv file
     private String title;
     private String category;
     private int yearReleased;
     private int yearNominated;
     private String awardee;
     private boolean awardStatus;
-    //data can be obtained from external API
     private String link;
 
     //constructors

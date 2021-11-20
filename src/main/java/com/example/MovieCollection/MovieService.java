@@ -1,19 +1,24 @@
 package com.example.MovieCollection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.Repository.MovieRepo;
 import com.opencsv.CSVReader;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class MovieService {
-        private List<Movie> movies = new ArrayList<Movie>();
+		@Autowired
+        private MovieRepo repo;
+		//@Autowired
+		//private Movie temp;
+		private List<Movie> movies = new ArrayList<Movie>();
         public MovieService() {
         	initMovieCollection();
         }
@@ -33,6 +38,7 @@ public class MovieService {
     					//id, title, category, yearReleased, yearNominated, awardee, status
     					Movie newMovie = new Movie(id,line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
     					movies.add(newMovie);
+    					//repo.save(newMovie);
     					id++;
     				}
     			}
