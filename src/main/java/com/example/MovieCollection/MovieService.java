@@ -12,16 +12,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 @Service
 public class MovieService {
 		@Autowired
-        private MovieRepo repo; //initialized as null for some reason
-		//@Autowired
-		//private Movie temp;
+		//initialized as null for some reason until I add PostConstruct on voidinitMovieCollection & leave constructor for MovieService empty
+        private MovieRepo repo; 
+		@Autowired
+		private Movie temp;
+		@Autowired
+		private Movie returnMovie;
+		@Autowired
 		private List<Movie> movies = new ArrayList<Movie>();
+		
+		
         public MovieService() {
-        	initMovieCollection();
+        	//initMovieCollection();
         }
+        @PostConstruct
         public void initMovieCollection() {
         	String path = "the_oscar_award.csv";
     		String[] line;
@@ -36,9 +45,9 @@ public class MovieService {
     					if(line[5] == null)
     						line[5] = "N/A";
     					//id, title, category, yearReleased, yearNominated, awardee, status
-    					Movie newMovie = new Movie(id,line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
-    					movies.add(newMovie);
-    					//repo.save(newMovie);
+    					temp = new Movie(id,line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
+    					movies.add(temp);
+    					repo.save(temp);
     					id++;
     				}
     			}
@@ -68,8 +77,8 @@ public class MovieService {
     //if it matches, it will update that id
     public void updateMovie(int id, Movie movie ){
             for(int i = 0; i < movies.size(); i++){
-                Movie m = movies.get(i);
-                if(m.getId() == id){
+                temp = movies.get(i);
+                if(temp.getId() == id){
                     movies.set(i, movie);
                     return;
                 }
@@ -84,17 +93,17 @@ public class MovieService {
     	List<Movie> list = new ArrayList<Movie>();
     	//retrieves ID of first Movie that was nominated for that year
     	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == year).findFirst().get().getId();
-    	Movie temp;
+    	//Movie temp;
     	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == year) {
-			Movie mov = new Movie();
-			mov.setTitle(temp.getTitle());
-			mov.setYearNominated(temp.getYearNominated());
-			mov.setYearReleased(temp.getYearReleased());
-			mov.setAwardee(temp.getAwardee());
-			mov.setAwardStatus(temp.isAwardStatus());
-			mov.setId(temp.getId());
-			mov.setCategory(temp.getCategory());
-			list.add(mov);
+			//Movie mov = new Movie();
+			returnMovie.setTitle(temp.getTitle());
+			returnMovie.setYearNominated(temp.getYearNominated());
+			returnMovie.setYearReleased(temp.getYearReleased());
+			returnMovie.setAwardee(temp.getAwardee());
+			returnMovie.setAwardStatus(temp.isAwardStatus());
+			returnMovie.setId(temp.getId());
+			returnMovie.setCategory(temp.getCategory());
+			list.add(returnMovie);
     		index++;
     	}
     	return list;
@@ -104,18 +113,18 @@ public class MovieService {
     	List<Movie> list = new ArrayList<Movie>();
     	//retrieves ID of first Movie that was nominated for that year
     	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == yearNominated).findFirst().get().getId();
-    	Movie temp;
+    	//Movie temp;
     	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == yearNominated) {
     		if(temp.getCategory().contains(category)) {
-    			Movie mov = new Movie();
-    			mov.setTitle(temp.getTitle());
-    			mov.setYearNominated(temp.getYearNominated());
-    			mov.setYearReleased(temp.getYearReleased());
-    			mov.setAwardee(temp.getAwardee());
-    			mov.setAwardStatus(temp.isAwardStatus());
-    			mov.setId(temp.getId());
-    			mov.setCategory(temp.getCategory());
-    			list.add(mov);
+    			//Movie mov = new Movie();
+    			returnMovie.setTitle(temp.getTitle());
+    			returnMovie.setYearNominated(temp.getYearNominated());
+    			returnMovie.setYearReleased(temp.getYearReleased());
+    			returnMovie.setAwardee(temp.getAwardee());
+    			returnMovie.setAwardStatus(temp.isAwardStatus());
+    			returnMovie.setId(temp.getId());
+    			returnMovie.setCategory(temp.getCategory());
+    			list.add(returnMovie);
     		}
     		index++;
     	}

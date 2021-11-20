@@ -1,9 +1,11 @@
 package com.example.MovieCollection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,7 @@ public class Movie {
     private String category;
     private int yearReleased;
     private int yearNominated;
+    @Column(columnDefinition = "TEXT") 
     private String awardee;
     private boolean awardStatus;
     private String link;
