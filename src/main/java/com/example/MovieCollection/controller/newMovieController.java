@@ -53,6 +53,13 @@ public class newMovieController {
     @Autowired
     private MovieService topicService;
 
+	@RequestMapping("/index")
+	public ModelAndView getIndex(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+		return modelAndView;
+	}
+
 	@RequestMapping("/apiDoc")
 	public ModelAndView getApiDoc(){
 		ModelAndView modelAndView = new ModelAndView();
