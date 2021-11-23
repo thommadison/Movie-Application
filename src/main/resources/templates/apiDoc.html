@@ -10,12 +10,27 @@
     <p>This pages list instructions for the use of the API.</p>
 
     <h2>Find Nomination by ID</h2>
+    <p>An Oscars nomination can be located in the database.</p>
     <p><b>http://localhost:8080/awardmovies/id/[id]</b></p>
-    <p>[id]: Valid ID will be integer with a value between 0 and 10394.</p>
+    <p>[id]: Valid ID will be integer with a value between 1 and 10394.</p>
+    <p>Output/Return:</p>
+    <p>A single JSON object with this format:</p>
+    <p>Example: {"id":1,"title":"The Noose","category":"ACTOR","yearReleased":1927,"yearNominated":1928,"awardee":"Richard Barthelmess","awardStatus":false,"link":null}</p>
+    <p>id:(data type: integer) Unique id for each nominated movie</p>
+    <p>title:(data type: string) Movie's title </p>
+    <p>category: (data type: string) The Oscars nomination category</p>
+    <p>yearReleased: (data type: integer) The release year of the movie</p>
+    <p>yearNominated: (data type: integer) The nominated year of the movie</p>
+    <p>awardee: (data type: string) The awardee of the nominated movie</p>
+    <p>awardStatus: (data type: boolean) Set to false if the nominated movie did not get the award. Set to true if the ominated movie get the award.</p>
+    <p>link: (data type: string) external link of the movie</p>
 
     <h2>Find Nomination by year</h2>
     <p><b>http://localhost:8080/awardmovies/year/[year]</b></p>
     <p>[year]: Valid year will be integer with a value between 1928 and 2020.</p>
+    <p>Output/Return:</p>
+    <p>A set of JSON objects of nominated movies within input year.</p>
+    <p>The format of the JSON object follow the format of nomination by ID</p>
 
     <h2>Find Nomination by Categories for rewards</h2>
     <p><b>http://localhost:8080/awardmovies/[categories]/[year]</b></p>
@@ -26,5 +41,6 @@
         <li>costume-design</li>
         <li>film-editing</li>
     </ul>
+    <p>Output/Return:</p>
 </body>   
 </html>
