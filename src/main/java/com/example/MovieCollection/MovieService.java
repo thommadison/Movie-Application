@@ -130,7 +130,16 @@ public class MovieService {
     	}
     	return list;
     }
-
+    //DATABASE METHODS
+    public List<Movie> testYear(int year) {
+    	return repo.findByYearNominated(year);
+    }
+    public List<Movie> findWinnersByCategory(String award, int year) {
+    	return repo.findWinnerByYear(award, year);
+    }
+    public List<Movie> findNominationsByCategoryAndYear(String award, int year) {
+    	return repo.findNominationsByYear(award, year);
+    }
     public Movie getWinner(String category, int yearNominated) {
     	return movies.stream().filter(t ->t.getYearNominated() == yearNominated && t.getCategory().contains(category) && t.isAwardStatus() == true).findFirst().get();
     }
