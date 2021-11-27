@@ -28,6 +28,7 @@ public class Movie {
     private String imageLink;
     @Column(columnDefinition = "TEXT") 
     private String plot;
+    private int tmdbId;
 
     //constructors
     //constructor using data from .csv file
@@ -110,6 +111,24 @@ public class Movie {
 		this.awardee = awardee;
 	}
     
+	public String getImageLink() {
+		return imageLink;
+	}
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
+	}
+	public String getPlot() {
+		return plot;
+	}
+	public void setPlot(String plot) {
+		this.plot = plot;
+	}
+	public int getTmdbId() {
+		return tmdbId;
+	}
+	public void setTmdbId(int tmdbId) {
+		this.tmdbId = tmdbId;
+	}
 	public String toString() {
 		return "ID: " + getId() + "\tTitle: " + getTitle()
 				+ "\tCategory: " + getCategory() + "\tReleased: "

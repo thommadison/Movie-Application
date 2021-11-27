@@ -1,11 +1,17 @@
 package com.example.MovieCollection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import org.springframework.stereotype.Service;
 
 import com.example.Repository.MovieRepo;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.opencsv.CSVReader;
+
+import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbSearch;
+import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.core.MovieResultsPage;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -14,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.Column;
 
 @Service
 public class MovieService {
@@ -22,7 +29,8 @@ public class MovieService {
         private MovieRepo repo; 
 		@Autowired
 		private List<Movie> movies = new ArrayList<Movie>();
-		
+		//@Autowired
+		private TmdbSearch searchApi = new TmdbApi("01b13b38fd2da4ca845144d2cedd9762").getSearch();
 		
         public MovieService() {
         	//initMovieCollection();
@@ -35,8 +43,9 @@ public class MovieService {
     			CSVReader csvReader = new CSVReader(new FileReader(path));
     			//reads line to skip category portion of file
     			line = csvReader.readNext();
-    			int id = 0;
     			if(line!=null) {
+    				int id = 1;
+        			//boolean skip = false;
     				while((line = csvReader.readNext()) != null) {
     					//0:yearReleased, 1:yearNominated, 3:category, 4:awardee, 5:title, 6:awardStatus
     					if(line[5] == null)
@@ -53,6 +62,12 @@ public class MovieService {
     		} catch(IOException e) {
     			e.printStackTrace();
     		}
+        }
+        public String getImageLink(String poster) {
+        	return "https://image.tmdb.org/t/p/w500" + poster;
+        }
+        public String getWatchLink(int tmdbId) {
+        	return "https://www.themoviedb.org/movie/" + tmdbId+"/watch";
         }
         //don't do this unless you want to break something
         public List<Movie> getAllMovies(){
@@ -85,59 +100,52 @@ public class MovieService {
     public void deleteMovie(int id) {
             movies.removeIf(t -> t.getId() == id);
     }
-
-	public List<Movie> getMoviesNominatedForYear(int year) {
-    	List<Movie> list = new ArrayList<Movie>();
-    	//retrieves ID of first Movie that was nominated for that year
-    	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == year).findFirst().get().getId();
-    	Movie temp;
-    	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == year) {
-			Movie mov = new Movie();
-			mov.setTitle(temp.getTitle());
-			mov.setYearNominated(temp.getYearNominated());
-			mov.setYearReleased(temp.getYearReleased());
-			mov.setAwardee(temp.getAwardee());
-			mov.setAwardStatus(temp.isAwardStatus());
-			mov.setId(temp.getId());
-			mov.setCategory(temp.getCategory());
-			list.add(mov);
-    		index++;
-    	}
-    	return list;
-    }
-
-    public List<Movie> getCategoryNominationsForYear(String category, int yearNominated) {
-    	List<Movie> list = new ArrayList<Movie>();
-    	//retrieves ID of first Movie that was nominated for that year
-    	int index = 1 + movies.stream().filter(t ->t.getYearNominated() == yearNominated).findFirst().get().getId();
-    	Movie temp;
-    	while(index < movies.size() && (temp = movies.get(index)).getYearNominated() == yearNominated) {
-    		if(temp.getCategory().contains(category)) {
-    			Movie mov = new Movie();
-    			mov.setTitle(temp.getTitle());
-    			mov.setYearNominated(temp.getYearNominated());
-    			mov.setYearReleased(temp.getYearReleased());
-    			mov.setAwardee(temp.getAwardee());
-    			mov.setAwardStatus(temp.isAwardStatus());
-    			mov.setId(temp.getId());
-    			mov.setCategory(temp.getCategory());
-    			list.add(mov);
+    public List<Movie> updateSearchedResults(List<Movie> list) {
+    	for(int i = 0; i < list.size(); i++) {
+    		Movie mov = list.get(i);
+    		if(mov.getPlot() == null) {
+    			MovieResultsPage results;
+    			if(!isBlank(mov.getTitle())) {
+    				int year = mov.getYearReleased();
+    				while((results = searchApi.searchMovie(mov.getTitle(), year, null, true, 0)).getTotalResults() == 0)
+    					year++;
+    				for(MovieDb m : results) {
+    					int apiId = m.getId();
+    					mov.setTmdbId(apiId);
+    					mov.setImageLink(getImageLink(m.getPosterPath()));
+    					mov.setLink(getWatchLink(apiId));
+    					mov.setPlot(m.getOverview());
+    					break;
+    				}
+    				repo.save(mov);
+    			}
     		}
-    		index++;
     	}
     	return list;
     }
     //DATABASE METHODS
-    public List<Movie> testYear(int year) {
-    	return repo.findByYearNominated(year);
+    public List<Movie> findByYear(int year) {
+    	return updateSearchedResults(repo.findByYear(year));
     }
     public List<Movie> findWinnersByCategory(String award, int year) {
-    	return repo.findWinnerByYear(award, year);
+    	return updateSearchedResults(repo.findWinnerByYear(award, year));
     }
     public List<Movie> findNominationsByCategoryAndYear(String award, int year) {
-    	return repo.findNominationsByYear(award, year);
+    	return updateSearchedResults(repo.findNominationsByYear(award, year));
     }
-    public Movie getWinner(String category, int yearNominated) {
-    	return movies.stream().filter(t ->t.getYearNominated() == yearNominated && t.getCategory().contains(category) && t.isAwardStatus() == true).findFirst().get();
+    //haven't tested this yet
+    public void updateDatabase(int id, Movie mov) {
+    	Movie temp = repo.findById(id);
+    	temp.setAwardee(mov.getAwardee());
+    	temp.setAwardStatus(mov.isAwardStatus());
+    	temp.setCategory(mov.getCategory());
+    	temp.setImageLink(mov.getImageLink());
+    	temp.setLink(mov.getLink());
+    	temp.setPlot(mov.getPlot());
+    	temp.setTitle(mov.getTitle());
+    	temp.setTmdbId(mov.getTmdbId());
+    	temp.setYearNominated(mov.getYearNominated());
+    	temp.setYearReleased(mov.getYearReleased());
+    	repo.save(temp);
     }
 }

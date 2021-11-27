@@ -82,10 +82,6 @@ public class newMovieController {
 	}
 
 	// return all movies within the input year
-	@RequestMapping("/year/{year}")
-    public List<Movie> getForYear(@PathVariable int year){
-        return topicService.getMoviesNominatedForYear(year);
-    }
     @RequestMapping("/animated-feature/{year}")
     public List<Movie> findAnimatedNominations(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(ANIMATED, year);
@@ -103,9 +99,9 @@ public class newMovieController {
 	public List<Movie> getMusicNominations(@PathVariable int year) {
 		return topicService.findWinnersByCategory(MUSIC, year);
 	}
-    @RequestMapping("test-year/{year}")
-    public List<Movie> testYear(@PathVariable int year) {
-    	return topicService.testYear(year);
+    @RequestMapping("year/{year}")
+    public List<Movie> findMoviesByYear(@PathVariable int year) {
+    	return topicService.findByYear(year);
     }
 	//return individual movie
 	@RequestMapping("/id/{id}")
