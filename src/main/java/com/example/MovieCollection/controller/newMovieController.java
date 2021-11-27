@@ -58,16 +58,16 @@ public class newMovieController {
 	public ModelAndView getIndex(@RequestParam(name="movie", required = false, defaultValue = "Movie not found") String name, Model model){
 		model.addAttribute("movie", Arrays.asList(
 			// get movie by id
-			topicService.getMovie(1),
-			topicService.getMovie(2),
-			topicService.getMovie(3),
-			topicService.getMovie(4),
-			topicService.getMovie(5),
-			topicService.getMovie(6),
-			topicService.getMovie(7),
-			topicService.getMovie(8),
-			topicService.getMovie(9),
-			topicService.getMovie(10)
+			topicService.findById(1),
+			topicService.findById(2),
+			topicService.findById(3),
+			topicService.findById(4),
+			topicService.findById(5),
+			topicService.findById(6),
+			topicService.findById(7),
+			topicService.findById(8),
+			topicService.findById(9),
+			topicService.findById(10)
 		));
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");

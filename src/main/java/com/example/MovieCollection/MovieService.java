@@ -73,13 +73,13 @@ public class MovieService {
         public List<Movie> getAllMovies(){
             return movies;
         }
-
+        /*
         public Movie getMovie(int id){
 
             //iterator over list of topics and return id
            return  movies.stream().filter(t ->t.getId() == id).findFirst().get();
         }
-
+		*/
 
     public void addMovie(Movie movie) {
             movies.add(movie);
@@ -124,6 +124,11 @@ public class MovieService {
     	return list;
     }
     //DATABASE METHODS
+    public Movie findById(int id) {
+    	List<Movie> temp = new ArrayList<Movie>();
+    	temp.add(repo.findById(id));
+    	return updateSearchedResults(temp).get(0);
+    }
     public List<Movie> findByYear(int year) {
     	return updateSearchedResults(repo.findByYear(year));
     }
