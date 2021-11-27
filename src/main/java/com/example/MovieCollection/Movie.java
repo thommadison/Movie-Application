@@ -25,6 +25,9 @@ public class Movie {
     private String awardee;
     private boolean awardStatus;
     private String link;
+    private String imageLink;
+    @Column(columnDefinition = "TEXT") 
+    private String plot;
 
     //constructors
     //constructor using data from .csv file
