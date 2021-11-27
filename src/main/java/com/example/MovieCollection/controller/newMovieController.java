@@ -4,10 +4,11 @@ import com.example.MovieCollection.Movie;
 import com.example.MovieCollection.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 //@Controller
@@ -54,7 +55,20 @@ public class newMovieController {
     private MovieService topicService;
 
 	@RequestMapping("/index")
-	public ModelAndView getIndex(){
+	public ModelAndView getIndex(@RequestParam(name="movie", required = false, defaultValue = "Movie not found") String name, Model model){
+		model.addAttribute("movie", Arrays.asList(
+			// get movie by id
+			topicService.getMovie(1),
+			topicService.getMovie(2),
+			topicService.getMovie(3),
+			topicService.getMovie(4),
+			topicService.getMovie(5),
+			topicService.getMovie(6),
+			topicService.getMovie(7),
+			topicService.getMovie(8),
+			topicService.getMovie(9),
+			topicService.getMovie(10)
+		));
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
 		return modelAndView;
