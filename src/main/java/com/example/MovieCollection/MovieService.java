@@ -27,13 +27,12 @@ public class MovieService {
 		@Autowired
 		//initialized as null for some reason until I add PostConstruct on voidinitMovieCollection & leave constructor for MovieService empty
         private MovieRepo repo; 
-		@Autowired
-		private List<Movie> movies = new ArrayList<Movie>();
+		//@Autowired
+		//private List<Movie> movies = new ArrayList<Movie>();
 		//@Autowired
 		private TmdbSearch searchApi = new TmdbApi("01b13b38fd2da4ca845144d2cedd9762").getSearch();
 		
         public MovieService() {
-        	//initMovieCollection();
         }
         @PostConstruct
         public void initMovieCollection() {
@@ -52,7 +51,7 @@ public class MovieService {
     						line[5] = "N/A";
     					//id, title, category, yearReleased, yearNominated, awardee, status
     					Movie mov = new Movie(id,line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
-    					movies.add(mov);
+    					//movies.add(mov);
     					repo.save(mov);
     					id++;
     				}
@@ -69,37 +68,7 @@ public class MovieService {
         public String getWatchLink(int tmdbId) {
         	return "https://www.themoviedb.org/movie/" + tmdbId+"/watch";
         }
-        //don't do this unless you want to break something
-        public List<Movie> getAllMovies(){
-            return movies;
-        }
-        /*
-        public Movie getMovie(int id){
-
-            //iterator over list of topics and return id
-           return  movies.stream().filter(t ->t.getId() == id).findFirst().get();
-        }
-		*/
-
-    public void addMovie(Movie movie) {
-            movies.add(movie);
-    }
-
-    //loop to compare id to input id
-    //if it matches, it will update that id
-    public void updateMovie(int id, Movie movie ){
-            for(int i = 0; i < movies.size(); i++){
-                Movie mov = movies.get(i);
-                if(mov.getId() == id){
-                    movies.set(i, movie);
-                    return;
-                }
-            }
-    }
-
-    public void deleteMovie(int id) {
-            movies.removeIf(t -> t.getId() == id);
-    }
+        
     public List<Movie> updateSearchedResults(List<Movie> list) {
     	for(int i = 0; i < list.size(); i++) {
     		Movie mov = list.get(i);
@@ -129,6 +98,12 @@ public class MovieService {
     	temp.add(repo.findById(id));
     	return updateSearchedResults(temp).get(0);
     }
+    public void deleteMovieByIdFromDatabase(int id) {
+    	repo.deleteById(id);
+    }
+    public void addMovieToDatabase(Movie mov) {
+    	repo.save(mov);
+    }
     public List<Movie> findByYear(int year) {
     	return updateSearchedResults(repo.findByYear(year));
     }
@@ -139,7 +114,7 @@ public class MovieService {
     	return updateSearchedResults(repo.findNominationsByYear(award, year));
     }
     //haven't tested this yet
-    public void updateDatabase(int id, Movie mov) {
+    public void updateMovieInDatabase(int id, Movie mov) {
     	Movie temp = repo.findById(id);
     	temp.setAwardee(mov.getAwardee());
     	temp.setAwardStatus(mov.isAwardStatus());

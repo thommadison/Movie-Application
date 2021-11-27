@@ -105,8 +105,8 @@ public class newMovieController {
     }
 	//return individual movie
 	@RequestMapping("/id/{id}")
-    public Movie getAnimatedNominationsWithId( @PathVariable int id) {
-    	return topicService.getMovie(id);
+    public Movie getMovieWithId( @PathVariable int id) {
+    	return topicService.findById(id);
     }
     
 	/*	// This RequestMapping overlapped with @RequestMapping("/animated-feature/{year}"), disabled it for now.
@@ -120,18 +120,18 @@ public class newMovieController {
     //add movie
     @RequestMapping(method = RequestMethod.POST, value ="/animatedfeature/2020")
     public void addMovie(@RequestBody Movie movie){
-        topicService.addMovie(movie);
+        topicService.addMovieToDatabase(movie);
     }
 
     //update movie
     @RequestMapping(method = RequestMethod.PUT, value ="/animatedfeature/2020/{id}")
     public void updateMovie(@RequestBody Movie movie, @PathVariable int id){
-        topicService.updateMovie(id, movie);
+        topicService.updateMovieInDatabase(id, movie);
     }
 
     //delete movie
-    @RequestMapping(method = RequestMethod.DELETE, value ="/animatedfeature/2020/{id}")
+    @RequestMapping(method = RequestMethod.DELETE, value ="/delete-movie/{id}")
     public void deleteMovie(@PathVariable int id){
-        topicService.deleteMovie(id);
+        topicService.deleteMovieByIdFromDatabase(id);
     }
 }
