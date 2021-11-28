@@ -76,7 +76,7 @@ public class MovieService {
     			MovieResultsPage results;
     			if(!isBlank(mov.getTitle())) {
     				int year = mov.getYearReleased();
-    				while((results = searchApi.searchMovie(mov.getTitle(), year, null, true, 0)).getTotalResults() == 0)
+    				while((results = searchApi.searchMovie(mov.getTitle(), year, null, true, 0)).getTotalResults() == 0 && year <= 2020)
     					year++;
     				for(MovieDb m : results) {
     					int apiId = m.getId();
@@ -86,6 +86,7 @@ public class MovieService {
     					mov.setPlot(m.getOverview());
     					break;
     				}
+    				System.out.println(mov);    				
     				repo.save(mov);
     			}
     		}
