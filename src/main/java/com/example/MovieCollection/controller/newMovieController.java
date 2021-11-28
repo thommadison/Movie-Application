@@ -18,7 +18,7 @@ public class newMovieController {
 	//categories for rewards
 	private final static String ACTOR = "ACTOR";
 	private final static String ACTRESS = "ACTRESS";
-	private final static String ACT_DIRECTION = "ART DIRECTION";
+	private final static String ART_DIRECTION = "ART DIRECTION";
 	private final static String DANCE_DIRECTION = "DANCE DIRECTION";
 	private final static String CINEMA = "CINEMATOGRAPHY";
 	private final static String WRITING = "WRITING";
@@ -86,6 +86,30 @@ public class newMovieController {
     public List<Movie> getAnimatedNominations(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(ANIMATED, year);
     }
+    @RequestMapping("/actor/{year}")
+    public List<Movie> getActorNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(ACTOR, year);
+    }
+    @RequestMapping("/actress/{year}")
+    public List<Movie> getActressNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(ACTRESS, year);
+    }
+    @RequestMapping("/art-direction/{year}")
+    public List<Movie> getArtDirectionNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(ART_DIRECTION, year);
+    }
+    @RequestMapping("/dance-direction/{year}")
+    public List<Movie> getDanceDirectionNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(DANCE_DIRECTION, year);
+    }
+    @RequestMapping("/cinematography/{year}")
+    public List<Movie> getCinemaNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(CINEMA, year);
+    }
+    @RequestMapping("/writing/{year}")
+    public List<Movie> getWritingNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(WRITING, year);
+    }
     @RequestMapping("/costume-design/{year}")
     public List<Movie> getCostumeNominations(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(COSTUME, year);
@@ -118,13 +142,13 @@ public class newMovieController {
 	*/
 
     //add movie
-    @RequestMapping(method = RequestMethod.POST, value ="/animatedfeature/2020")
+    @RequestMapping(method = RequestMethod.POST, value ="/add-movie")
     public void addMovie(@RequestBody Movie movie){
         topicService.addMovieToDatabase(movie);
     }
 
     //update movie
-    @RequestMapping(method = RequestMethod.PUT, value ="/animatedfeature/2020/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value ="/update-movie/id/{id}")
     public void updateMovie(@RequestBody Movie movie, @PathVariable int id){
         topicService.updateMovieInDatabase(id, movie);
     }
