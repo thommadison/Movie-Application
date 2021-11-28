@@ -113,6 +113,10 @@ public class MovieService {
     public List<Movie> findNominationsByCategoryAndYear(String award, int year) {
     	return updateSearchedResults(repo.findNominationsByYear(award, year));
     }
+    //possible method to use for custom searches
+    public List<Movie> findByTitle(String title) {
+    	return updateSearchedResults(repo.searchByTitle(title));
+    }
     //haven't tested this yet
     public void updateMovieInDatabase(int id, Movie mov) {
     	Movie temp = repo.findById(id);
