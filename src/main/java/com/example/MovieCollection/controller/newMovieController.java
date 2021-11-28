@@ -110,6 +110,14 @@ public class newMovieController {
     public List<Movie> getWritingNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(WRITING, year);
     }
+    @RequestMapping("/directing/{year}")
+    public List<Movie> getDirectingNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(DIRECTING, year);
+    }
+    @RequestMapping("/engineering-effects/{year}")
+    public List<Movie> getEngineeringEffectsNominated(@PathVariable int year) {
+    	return topicService.findNominationsByCategoryAndYear(ENGINEERING_EFFECTS, year);
+    }
     @RequestMapping("/costume-design/{year}")
     public List<Movie> getCostumeNominations(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(COSTUME, year);
@@ -132,7 +140,10 @@ public class newMovieController {
     public Movie getMovieWithId( @PathVariable int id) {
     	return topicService.findById(id);
     }
-    
+    @GetMapping("/search-movie")
+    public List<Movie> getSearchResults(@RequestParam(name = "Title") String title) {
+    	return topicService.findByTitle(title);
+    }
 	/*	// This RequestMapping overlapped with @RequestMapping("/animated-feature/{year}"), disabled it for now.
     //return individual movie
     @RequestMapping("/animatedfeature/{id}")
