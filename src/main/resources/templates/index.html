@@ -50,8 +50,8 @@
                     </li>
                     </ul>
                     <form class="d-flex" role="search" id="form">
-                    <input class="form-control me-2" type="search" id="query" name="q" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                        <input class="form-control me-2" type="search" id="query" name="q" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -95,19 +95,13 @@
         const q = document.getElementById('query');
         const localhost = 'http://localhost:8080/';
         const site = 'awardmovies/';
-        const id = 'id/';
+        //const id = 'id/';
         const search = 'search-movie?';
         const title = 'Title=';
 
-  
         function submitted(event) {
-            //const string = String(q.value);
-            //const str = string.split('');
-            /*for(const i = 0; i < str.length; i++) {
-    		    if(str[i] == ' ')
-    			    str[i] = '_';
-    		}*/
             event.preventDefault();
+            // Some movies name are number, eg.1917. It will cause issues if enable search by id.
             //const urlId = localhost + site + id + q.value; 
             //const win = window.open(urlId, '_blank').focus();
 
