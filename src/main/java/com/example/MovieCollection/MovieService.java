@@ -115,20 +115,7 @@ public class MovieService {
     }
     //possible method to use for custom searches
     public List<Movie> findByTitle(String title) {
-    	boolean include = false;
-    	char[] str = title.toCharArray();
-    	for(int i = 0; i < str.length; i++) {
-    		if(str[i] == '-' && !include) {
-    			include = true;
-    			str[i] = ' ';
-    		}
-    		else
-    			include = false;
-    	}
-    	System.out.println(str.toString());
-    	String searchTitle = "";
-    	for(int i = 0; i < str.length; i++)
-    		searchTitle+=str[i];
+    	String searchTitle = title.replaceAll("_", " ");
     	//System.out.println(searchTitle);
     	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(searchTitle));
     }
