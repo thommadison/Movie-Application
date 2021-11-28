@@ -19,6 +19,5 @@ public interface MovieRepo extends CrudRepository<Movie,Integer> {
 	List<Movie> findNominationsByYear(String award, int year);
 	Movie findById(int id);
 	void deleteById(int id);
-	@Query("FROM Movie WHERE UPPER(title) LIKE UPPER(%?1%)")
-	List<Movie> searchByTitle(String title);
+	List<Movie> findByTitleContainingIgnoreCase(String title);
 }
