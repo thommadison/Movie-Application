@@ -56,7 +56,20 @@ public class newMovieController {
 
 	@RequestMapping("/index")
 	public ModelAndView getIndex(@RequestParam(name="movie", required = false, defaultValue = "Movie not found") String name, Model model){
-		model.addAttribute("movie", Arrays.asList(
+		List<Movie> list = new ArrayList<Movie>();
+		// Check if movie title is blank
+		// From oldest
+		for (int i =1; i<11;i++)
+			list.add(topicService.findById(i));
+		// From latest
+		for (int i=10394; i >10384;i--)
+			list.add(topicService.findById(i));
+		model.addAttribute("movie", list);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+		return modelAndView;
+		// testing 
+		/*Arrays.asList(
 			// get movie by id
 			topicService.findById(1),
 			topicService.findById(2),
@@ -68,10 +81,8 @@ public class newMovieController {
 			topicService.findById(8),
 			topicService.findById(9),
 			topicService.findById(10)
-		));
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
-		return modelAndView;
+			
+		);*/
 	}
 
 	@RequestMapping("/apiDoc")
