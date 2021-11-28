@@ -115,7 +115,22 @@ public class MovieService {
     }
     //possible method to use for custom searches
     public List<Movie> findByTitle(String title) {
-    	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(title));
+    	boolean include = false;
+    	char[] str = title.toCharArray();
+    	for(int i = 0; i < str.length; i++) {
+    		if(str[i] == '-' && !include) {
+    			include = true;
+    			str[i] = ' ';
+    		}
+    		else
+    			include = false;
+    	}
+    	System.out.println(str.toString());
+    	String searchTitle = "";
+    	for(int i = 0; i < str.length; i++)
+    		searchTitle+=str[i];
+    	//System.out.println(searchTitle);
+    	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(searchTitle));
     }
     //haven't tested this yet
     public void updateMovieInDatabase(int id, Movie mov) {

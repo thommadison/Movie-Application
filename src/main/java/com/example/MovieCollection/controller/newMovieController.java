@@ -140,8 +140,8 @@ public class newMovieController {
     public Movie getMovieWithId( @PathVariable int id) {
     	return topicService.findById(id);
     }
-    @RequestMapping("search/{title}")
-    public List<Movie> getSearchResults(@PathVariable String title) {
+    @GetMapping("/search-movie")
+    public List<Movie> getSearchResults(@RequestParam(name = "Title") String title) {
     	return topicService.findByTitle(title);
     }
 	/*	// This RequestMapping overlapped with @RequestMapping("/animated-feature/{year}"), disabled it for now.
