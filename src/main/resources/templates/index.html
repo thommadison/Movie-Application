@@ -97,14 +97,26 @@
         const q = document.getElementById('query');
         const localhost = 'http://localhost:8080/';
         const site = 'awardmovies/';
-        const id = "id/"
+        const id = 'id/';
+        const search = 'search-movie?';
+        const title = 'Title=';
+
   
         function submitted(event) {
+            //const string = String(q.value);
+            //const str = string.split('');
+            /*for(const i = 0; i < str.length; i++) {
+    		    if(str[i] == ' ')
+    			    str[i] = '_';
+    		}*/
             event.preventDefault();
-            const url = localhost + site + id + q.value;
-            const win = window.open(url, '_blank').focus();
+            //const urlId = localhost + site + id + q.value; 
+            //const win = window.open(urlId, '_blank').focus();
+
+            const urlName = localhost + site + search + title + q.value;
+            const win = window.open(urlName, '_blank').focus();
         }
-        
+
         f.addEventListener('submit', submitted);
     </script>
 </body>
