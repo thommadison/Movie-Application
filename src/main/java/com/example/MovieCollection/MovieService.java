@@ -115,6 +115,7 @@ public class MovieService {
     }
     //possible method to use for custom searches
     public List<Movie> findByTitle(String title) {
+    	//need to use _ since some movies use - in the title and the path would be messy
     	String searchTitle = title.replaceAll("_", " ");
     	//System.out.println(searchTitle);
     	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(searchTitle));
