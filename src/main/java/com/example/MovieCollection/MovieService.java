@@ -115,7 +115,7 @@ public class MovieService {
     }
     //possible method to use for custom searches
     public List<Movie> findByTitle(String title) {
-    	return updateSearchedResults(repo.searchByTitle(title));
+    	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(title));
     }
     //haven't tested this yet
     public void updateMovieInDatabase(int id, Movie mov) {
