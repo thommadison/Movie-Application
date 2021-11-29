@@ -53,6 +53,32 @@
                         <input class="form-control me-2" type="search" id="query" name="q" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                        Advanced Search
+                    </button>
+                    <div style="min-height: 120px;">
+                        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                            <div class="card card-body" style="width: 300px;">
+                                <font color="black">
+                                    <form class="d-flex" role="search" id="form1">
+                                        <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="year" name="y" onchange="yearSelect()">
+                                            <option selected>Year</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2018">2018</option>
+                                        </select>
+                                        <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="category" name="c" onchange="category()">
+                                            <option selected>Category</option>
+                                            <option value="animated-feature">Animated feature</option>
+                                            <option value="costume-design">Costume design</option>
+                                            <option value="film-editing">Film editing</option>
+                                        </select>
+                                        <button class="btn btn-outline-success" type="submit1">Search</button>
+                                    </form>
+                                </font>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -98,18 +124,38 @@
         //const id = 'id/';
         const search = 'search-movie?';
         const title = 'Title=';
+        var year1;
+        var category1;
 
         function submitted(event) {
             event.preventDefault();
+            if (q.value == '')
+                alert("Input cannot be empty");
+            else{
+                const urlName = localhost + site + search + title + q.value;
+                const win = window.open(urlName, '_blank').focus();
+            }
             // Some movies name are number, eg.1917. It will cause issues if enable search by id.
             //const urlId = localhost + site + id + q.value; 
             //const win = window.open(urlId, '_blank').focus();
+        }
+        f.addEventListener('submit', submitted);
 
-            const urlName = localhost + site + search + title + q.value;
-            const win = window.open(urlName, '_blank').focus();
+        const f1 = document.getElementById('form1');
+
+        function yearSelect(){
+            year1 = document.getElementById('year').value;
         }
 
-        f.addEventListener('submit', submitted);
+        function category(){
+            category1 = document.getElementById('category').value;
+        }
+        function submitted1(event) {
+            event.preventDefault();
+            const urlName1 = localhost + site + category1 + "/" + year1;
+            const win1 = window.open(urlName1, '_blank').focus();
+        }
+        f1.addEventListener('submit1', submitted1);
     </script>
 </body>
 </html>
