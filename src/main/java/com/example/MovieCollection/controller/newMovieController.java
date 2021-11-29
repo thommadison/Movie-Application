@@ -50,6 +50,9 @@ public class newMovieController {
 	
 	private final static int MIN_NOMINATION_YEAR = 1928;
 	private final static int MAX_NOMINATION_YEAR = 2020;
+	private final static int ORDER_FROM_OLDEST = 1;
+	private final static int ORDER_FROM_LATEST = 10394;
+	private final static int MAX_NO_DISPLAY = 10;
 
     @Autowired
     private MovieService topicService;
@@ -59,18 +62,17 @@ public class newMovieController {
 		List<Movie> list = new ArrayList<Movie>();
 		// Check if movie title is blank
 		// From oldest
-		for (int i =1; i<11;i++)
+		for (int i = ORDER_FROM_OLDEST; i < ORDER_FROM_OLDEST+MAX_NO_DISPLAY;i++)
 			list.add(topicService.findById(i));
 		// From latest
-		for (int i=10394; i >10384;i--)
-			list.add(topicService.findById(i));
+		//for (int i=ORDER_FROM_LATEST; i >ORDER_FROM_LATEST-MAX_NO_DISPLAY;i--)
+		//	list.add(topicService.findById(i));
 		model.addAttribute("movie", list);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
 		return modelAndView;
 		// testing 
 		/*Arrays.asList(
-			// get movie by id
 			topicService.findById(1),
 			topicService.findById(2),
 			topicService.findById(3),
@@ -84,73 +86,84 @@ public class newMovieController {
 			
 		);*/
 	}
-
+	// api document page holder
 	@RequestMapping("/apiDoc")
 	public ModelAndView getApiDoc(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("apiDoc");
 		return modelAndView;
 	}
-
-	// return all movies within the input year
+	// returns the movies of animated feature award within the input year
     @RequestMapping("/animated-feature/{year}")
     public List<Movie> getAnimatedNominations(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(ANIMATED, year);
     }
+	// returns the movies of actor award within the input year
     @RequestMapping("/actor/{year}")
     public List<Movie> getActorNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(ACTOR, year);
     }
+	// returns the movies of actress award within the input year
     @RequestMapping("/actress/{year}")
     public List<Movie> getActressNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(ACTRESS, year);
     }
+	// returns the movies of art direction award within the input year
     @RequestMapping("/art-direction/{year}")
     public List<Movie> getArtDirectionNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(ART_DIRECTION, year);
     }
+	// returns the movies of dance direction award within the input year
     @RequestMapping("/dance-direction/{year}")
     public List<Movie> getDanceDirectionNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(DANCE_DIRECTION, year);
     }
+	// returns the movies of cinematography award within the input year
     @RequestMapping("/cinematography/{year}")
     public List<Movie> getCinemaNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(CINEMA, year);
     }
+	// returns the movies of writing award within the input year
     @RequestMapping("/writing/{year}")
     public List<Movie> getWritingNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(WRITING, year);
     }
+	// returns the movies of directing award within thg input year
     @RequestMapping("/directing/{year}")
     public List<Movie> getDirectingNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(DIRECTING, year);
     }
+	// returns the movies if engineering effects award within the input year
     @RequestMapping("/engineering-effects/{year}")
     public List<Movie> getEngineeringEffectsNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(ENGINEERING_EFFECTS, year);
     }
+	// returns the movies of costume design award within the input year
     @RequestMapping("/costume-design/{year}")
     public List<Movie> getCostumeNominations(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(COSTUME, year);
     }
-  //returns movie that won input award for input year
+    // returns movies of film editing award within input year
     @RequestMapping("/film-editing/{year}")
     public List<Movie> getFilmEditingWinner(@PathVariable int year) {
     	return topicService.findWinnersByCategory(FILM_EDITING, year);
     }
+	// returns movies of music award within input year
     @RequestMapping("/music/{year}")
 	public List<Movie> getMusicNominations(@PathVariable int year) {
 		return topicService.findWinnersByCategory(MUSIC, year);
 	}
+	// returns all movies within input year
     @RequestMapping("year/{year}")
     public List<Movie> getMoviesByYear(@PathVariable int year) {
     	return topicService.findByYear(year);
     }
-	//return individual movie
+	// return individual movie with id
 	@RequestMapping("/id/{id}")
     public Movie getMovieWithId( @PathVariable int id) {
     	return topicService.findById(id);
     }
+	// search function api
     @GetMapping("/search-movie")
     public List<Movie> getSearchResults(@RequestParam(name = "Title") String title) {
     	return topicService.findByTitle(title);
@@ -160,22 +173,18 @@ public class newMovieController {
     @RequestMapping("/animatedfeature/{id}")
     public Movie getMovie(@PathVariable int id){
         return topicService.getMovie(id);
-    }
-	*/
-
-    //add movie
+    }*/
+    // add movie
     @RequestMapping(method = RequestMethod.POST, value ="/add-movie")
     public void addMovie(@RequestBody Movie movie){
         topicService.addMovieToDatabase(movie);
     }
-
-    //update movie
+    // update movie
     @RequestMapping(method = RequestMethod.PUT, value ="/update-movie/id/{id}")
     public void updateMovie(@RequestBody Movie movie, @PathVariable int id){
         topicService.updateMovieInDatabase(id, movie);
     }
-
-    //delete movie
+    // delete movie
     @RequestMapping(method = RequestMethod.DELETE, value ="/delete-movie/{id}")
     public void deleteMovie(@PathVariable int id){
         topicService.deleteMovieByIdFromDatabase(id);
