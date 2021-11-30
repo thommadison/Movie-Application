@@ -46,6 +46,8 @@
                         <li><a class="dropdown-item" href="/awardmovies/year/2019">2019</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/year/2018">2018</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/year/2017">2017</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/year/2016">2016</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/year/2015">2015</a></li>
                         </ul>
                     </li>
                     </ul>
@@ -60,14 +62,12 @@
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">
                             <div class="card card-body" style="width: 400px;color:black">
                                 <form class="d-flex" role="search" id="form1">
-                                    <!--
-                                    <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="year" name="y" onchange="yearSelect()" style="width: 100px;">
+                                    <!--<select class="form-select" aria-label="Search" placeholder="Search" type="search" id="year" name="y" onchange="yearSelect()" style="width: 100px;">
                                         <option selected>Year</option>
                                         <option value="2020">2020</option>
                                         <option value="2019">2019</option>
                                         <option value="2018">2018</option>
-                                    </select>
-                                    -->
+                                    </select>-->
                                     <input class="form-control me-2" type="search" id="year" name="y" placeholder="Year" aria-label="Search">
                                     <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="category" name="c" onchange="categorySelect()">
                                         <option selected>Category</option>
@@ -115,56 +115,9 @@
         </tbody>
     </table>
     </div>
+    <!-- Testing <button type="button" th:onclick="showAlert()">Show Alert</button> -->
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script>
-        const f = document.getElementById('form');
-        const q = document.getElementById('query');
-        const domain = 'http://localhost:8080/';
-        const site = 'awardmovies/';
-        //const id = 'id/';
-        const search = 'search-movie?';
-        const title = 'Title=';
-        //let year1;
-        const y = document.getElementById('year');
-        let category1;
-
-        function submitted(event) {
-            event.preventDefault();
-            if (q.value == '')
-                alert("Input cannot be empty");
-            else{
-                const urlName = domain + site + search + title + q.value;
-                const win = window.open(urlName, '_blank').focus();
-            }
-            // Some movies name are number, eg.1917. It will cause issues if enable search by id.
-            //const urlId = localhost + site + id + q.value; 
-            //const win = window.open(urlId, '_blank').focus();
-        }
-        f.addEventListener('submit', submitted);
-
-        const f1 = document.getElementById('form1');
-        /*function yearSelect(){
-            year1 = document.getElementById('year').value;
-        }*/
-        function categorySelect(){
-            category1 = document.getElementById('category').value;
-        }
-        function submitted1(event) {
-            event.preventDefault();
-            if (y.value == ''){
-                alert("Incorrect input. Input year cannot be empty.");
-            } else if (isNaN(y.value)){
-                alert("Incorrect input. Input year is not a number.");
-            } else if (y.value < 1928 || y.value > 2020){
-                alert("Incorrect input. Input year should be between 1928-2020.");
-            } else {
-                //alert("category: "+ category1 + " , year: " + year1);
-                let urlName1 = domain + site + category1 + "/" + y.value;
-                let win1 = window.open(urlName1, '_blank').focus();
-            }
-        }
-        f1.addEventListener('submit', submitted1);
-    </script>
+    <script type="text/javascript" th:src="@{/js/cssandjs/actions.js}"></script>
 </body>
 </html>
