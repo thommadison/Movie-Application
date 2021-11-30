@@ -62,11 +62,11 @@ public class newMovieController {
 		List<Movie> list = new ArrayList<Movie>();
 		// Check if movie title is blank
 		// From oldest
-		for (int i = ORDER_FROM_OLDEST; i < ORDER_FROM_OLDEST+MAX_NO_DISPLAY;i++)
-			list.add(topicService.findById(i));
-		// From latest
-		//for (int i=ORDER_FROM_LATEST; i >ORDER_FROM_LATEST-MAX_NO_DISPLAY;i--)
+		//for (int i = ORDER_FROM_OLDEST; i < ORDER_FROM_OLDEST+MAX_NO_DISPLAY;i++)
 		//	list.add(topicService.findById(i));
+		// From latest
+		for (int i=ORDER_FROM_LATEST-3; i >ORDER_FROM_LATEST-3-MAX_NO_DISPLAY;i--)
+			list.add(topicService.findById(i));
 		model.addAttribute("movie", list);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
