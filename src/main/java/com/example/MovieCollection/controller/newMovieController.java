@@ -1,5 +1,6 @@
 package com.example.MovieCollection.controller;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
 import com.example.MovieCollection.Movie;
 import com.example.MovieCollection.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,8 +66,13 @@ public class newMovieController {
 		//for (int i = ORDER_FROM_OLDEST; i < ORDER_FROM_OLDEST+MAX_NO_DISPLAY;i++)
 		//	list.add(topicService.findById(i));
 		// From latest
-		for (int i=ORDER_FROM_LATEST-3; i >ORDER_FROM_LATEST-3-MAX_NO_DISPLAY;i--)
-			list.add(topicService.findById(i));
+		for (int i=ORDER_FROM_LATEST, j = ORDER_FROM_LATEST; j > ORDER_FROM_LATEST-MAX_NO_DISPLAY; i--, j--) {
+			Movie temp = topicService.findById(i);
+			if(!isBlank(temp.getTitle()))
+				list.add(topicService.findById(i));
+			else
+				j++;
+		}
 		model.addAttribute("movie", list);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
