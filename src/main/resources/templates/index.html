@@ -58,24 +58,25 @@
                     </button>
                     <div style="min-height: 120px;">
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                            <div class="card card-body" style="width: 300px;">
-                                <font color="black">
-                                    <form class="d-flex" role="search" id="form1">
-                                        <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="year" name="y" onchange="yearSelect()">
-                                            <option selected>Year</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2018">2018</option>
-                                        </select>
-                                        <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="category" name="c" onchange="category()">
-                                            <option selected>Category</option>
-                                            <option value="animated-feature">Animated feature</option>
-                                            <option value="costume-design">Costume design</option>
-                                            <option value="film-editing">Film editing</option>
-                                        </select>
-                                        <button class="btn btn-outline-success" type="submit1">Search</button>
-                                    </form>
-                                </font>
+                            <div class="card card-body" style="width: 400px;color:black">
+                                <form class="d-flex" role="search" id="form1">
+                                    <!--
+                                    <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="year" name="y" onchange="yearSelect()" style="width: 100px;">
+                                        <option selected>Year</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2018">2018</option>
+                                    </select>
+                                    -->
+                                    <input class="form-control me-2" type="search" id="year" name="y" placeholder="Year" aria-label="Search">
+                                    <select class="form-select" aria-label="Search" placeholder="Search" type="search" id="category" name="c" onchange="categorySelect()">
+                                        <option selected>Category</option>
+                                        <option value="animated-feature">Animated feature</option>
+                                        <option value="costume-design">Costume design</option>
+                                        <option value="film-editing">Film editing</option>
+                                    </select>
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -95,8 +96,8 @@
             <th scope = "col">Released Year</th>
             <th scope = "col">Nominated Year</th>
             <th scope = "col">Awardee</th>
-            <th scope = "col">link</th> 
-            <th scope = "col">plot</th>
+            <th scope = "col">Link</th> 
+            <th scope = "col">Overview</th>
         </tr>
         </thead>
         <tbody>
@@ -119,20 +120,21 @@
     <script>
         const f = document.getElementById('form');
         const q = document.getElementById('query');
-        const localhost = 'http://localhost:8080/';
+        const domain = 'http://localhost:8080/';
         const site = 'awardmovies/';
         //const id = 'id/';
         const search = 'search-movie?';
         const title = 'Title=';
-        var year1;
-        var category1;
+        //let year1;
+        const y = document.getElementById('year');
+        let category1;
 
         function submitted(event) {
             event.preventDefault();
             if (q.value == '')
                 alert("Input cannot be empty");
             else{
-                const urlName = localhost + site + search + title + q.value;
+                const urlName = domain + site + search + title + q.value;
                 const win = window.open(urlName, '_blank').focus();
             }
             // Some movies name are number, eg.1917. It will cause issues if enable search by id.
@@ -142,20 +144,27 @@
         f.addEventListener('submit', submitted);
 
         const f1 = document.getElementById('form1');
-
-        function yearSelect(){
+        /*function yearSelect(){
             year1 = document.getElementById('year').value;
-        }
-
-        function category(){
+        }*/
+        function categorySelect(){
             category1 = document.getElementById('category').value;
         }
         function submitted1(event) {
             event.preventDefault();
-            const urlName1 = localhost + site + category1 + "/" + year1;
-            const win1 = window.open(urlName1, '_blank').focus();
+            if (y.value == ''){
+                alert("Incorrect input. Input year cannot be empty.");
+            } else if (isNaN(y.value)){
+                alert("Incorrect input. Input year is not a number.");
+            } else if (y.value < 1928 || y.value > 2020){
+                alert("Incorrect input. Input year should be between 1928-2020.");
+            } else {
+                //alert("category: "+ category1 + " , year: " + year1);
+                let urlName1 = domain + site + category1 + "/" + y.value;
+                let win1 = window.open(urlName1, '_blank').focus();
+            }
         }
-        f1.addEventListener('submit1', submitted1);
+        f1.addEventListener('submit', submitted1);
     </script>
 </body>
 </html>
