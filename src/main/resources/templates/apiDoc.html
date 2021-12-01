@@ -278,6 +278,31 @@
     <p>              The more genral input, the longer response time, and it might included more objects</p>
     <p>For example: Input "the last command" will return only one JSON object</p>
     <p>             Input "last" will return about 50 JSON object with longer response time.</p>
+    <hr>
+    <h2>Find Winner By Category</h2>
+    <p>Finds the winners of a given category with respect to that year.</p>
+    <p></p>
+    <p>Input:</p>
+    <p><b>http://localhost:8080/awardmovies/winning/[categories]/[year]</b></p>
+    <p>[year]: A Valid year will be integer with a value between 1928 and 2020.</p>
+    <p>[categories]: valid categories include</p>
+    <ul>
+        <li>animated-feature</li>
+        <li>actor</li>
+        <li>actress</li>
+        <li>art-direction</li>
+        <li>costume-design</li>
+        <li>dance-direction</li>
+        <li>cinematography</li>
+        <li>writing</li>
+        <li>directing</li>
+        <li>engineering-effects</li>
+        <li>film-editing</li>
+        <li>music</li>
+    </ul>
+    <p>Output/Return:</p>
+    <p>A singleton resource in JSON that displays the winner of that given category and year.</p>
+    <p>The format of a JSON object follow the format of nomination by ID</p>
     </div>
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
