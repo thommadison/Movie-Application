@@ -52,7 +52,7 @@ public class newMovieController {
 	private final static int MIN_NOMINATION_YEAR = 1928;
 	private final static int MAX_NOMINATION_YEAR = 2020;
 	private final static int ORDER_FROM_OLDEST = 1;
-	private final static int ORDER_FROM_LATEST = 10394;
+	private final static int ORDER_FROM_LATEST = 4671;
 	private final static int MAX_NO_DISPLAY = 10;
 
     @Autowired
@@ -374,7 +374,7 @@ public class newMovieController {
 		}
 		catch (Exception e){
 			//List<Movie> temp = new ArrayList<Movie>();
-			return new ArrayList<Movie>();
+			return topicService.findByCategory(category);
 		}
 	}
 	// search function api
