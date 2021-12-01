@@ -121,6 +121,12 @@ public class MovieService {
     	//System.out.println(searchTitle);
     	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(searchTitle));
     }
+    public List<Movie> findByCategory(String category) {
+    	return updateSearchedResults(repo.findByCategoryContainingIgnoreCase(category));
+    }
+    public List<Movie> findByTitleAndCategoryAndYear(String category, String title, int year) {
+    	return updateSearchedResults(repo.findNominationsByTitleAndYear(category, title, year));
+    }
     //haven't tested this yet
     public void updateMovieInDatabase(int id, Movie mov) {
     	Movie temp = repo.findById(id);

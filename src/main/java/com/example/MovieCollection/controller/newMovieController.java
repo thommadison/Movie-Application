@@ -353,6 +353,30 @@ public class newMovieController {
     public Movie getMovieWithId( @PathVariable int id) {
     	return topicService.findById(id);
     }
+	@RequestMapping("/category/{category}")
+	public List<Movie> getCategory(@PathVariable String category) {
+		return topicService.findByCategory(category);
+	}
+	//possible method to reduce amount of REST Endpoints
+	@RequestMapping("/category/{category}/year/{year}")
+	public List<Movie> getCategoryAndYear(@PathVariable String category, @PathVariable String year) {
+		try {
+			return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), Integer.parseInt(year));
+		}
+		catch(Exception e) {
+			return getCategory(category);
+		}
+	}
+	@GetMapping("/search/category-year-nominated")
+	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") String year) {
+		try {
+			return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), Integer.parseInt(year));
+		}
+		catch (Exception e){
+			//List<Movie> temp = new ArrayList<Movie>();
+			return new ArrayList<Movie>();
+		}
+	}
 	// search function api
     @GetMapping("/search-movie")
     public List<Movie> getSearchResults(@RequestParam(name = "Title") String title) {
