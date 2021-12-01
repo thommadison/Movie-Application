@@ -355,12 +355,14 @@ public class newMovieController {
     }
 	@RequestMapping("/category/{category}")
 	public List<Movie> getCategory(@PathVariable String category) {
+		category = category.replaceAll("[-_]"," ");
 		return topicService.findByCategory(category);
 	}
 	//possible method to reduce amount of REST Endpoints
 	@RequestMapping("/category/{category}/year/{year}")
 	public List<Movie> getCategoryAndYear(@PathVariable String category, @PathVariable String year) {
 		try {
+			category = category.replaceAll("[-_]"," ");
 			return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), Integer.parseInt(year));
 		}
 		catch(Exception e) {
@@ -370,6 +372,7 @@ public class newMovieController {
 	@GetMapping("/search/category-year-nominated")
 	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") String year) {
 		try {
+			category = category.replaceAll("[-_]"," ");
 			return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), Integer.parseInt(year));
 		}
 		catch (Exception e){
