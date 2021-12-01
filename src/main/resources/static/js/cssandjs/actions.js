@@ -13,7 +13,9 @@ function submitted(event) {
     event.preventDefault();
     if (q.value == '')
         alert("Input cannot be empty");
-    else{
+    else if (q.value.length < 3){
+        alert("Incorrect input. Search name characters cannot be less than 3.")
+    } else{
         const urlName = domain + site + search + title + q.value;
         const win = window.open(urlName, '_blank').focus();
     }
@@ -36,8 +38,11 @@ function submitted1(event) {
         alert("Incorrect input. Input year cannot be empty.");
     } else if (isNaN(y.value)){
         alert("Incorrect input. Input year is not a number.");
-    } else if (y.value < 1928 || y.value > 2020){
-        alert("Incorrect input. Input year should be between 1928-2020.");
+    } else if (y.value < 1980 || y.value > 2020){
+        alert("Incorrect input. Input year should be between 1980-2020.");
+    } else if (document.querySelector('#winner:checked') !== null){
+        let urlName1 = domain + site + "winning/" + category1 + "/" + y.value;
+        let win1 = window.open(urlName1, '_blank').focus();
     } else {
         //alert("category: "+ category1 + " , year: " + year1);
         let urlName1 = domain + site + category1 + "/" + y.value;
@@ -45,7 +50,3 @@ function submitted1(event) {
     }
 }
 f1.addEventListener('submit', submitted1);
-/*
-function showAlert() {
-    alert("The button was clicked!");
-}*/
