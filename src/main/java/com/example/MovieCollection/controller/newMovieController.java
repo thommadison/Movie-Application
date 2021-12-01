@@ -249,7 +249,7 @@ public class newMovieController {
     public List<Movie> getSoundRecordingNominated(@PathVariable int year) {
     	return topicService.findNominationsByCategoryAndYear(SOUND_RECORDING, year);
     }
-    @RequestMapping("/winning-sound-recording/{year}")
+    @RequestMapping("/winning/sound-recording/{year}")
     public List<Movie> getSoundRecordingWinners(@PathVariable int year) {
     	return topicService.findWinnersByCategory(SOUND_RECORDING, year);
     }
