@@ -369,7 +369,15 @@ public class newMovieController {
 			return getCategory(category);
 		}
 	}
-	@GetMapping("/search/category-year-nominated")
+	@RequestMapping("/range/start/{start}/end/{end}")
+	public List<Movie> getMoviesWithinRange(@PathVariable int start, @PathVariable int end) {
+		return topicService.findNominationsBetweenYears(start, end);
+	}
+	@RequestMapping("/category/{category}/start/{start}/end/{end}")
+	public List<Movie> getNominationTypeWithinRange(@PathVariable String category, @PathVariable int start, @PathVariable int end) {
+		return topicService.findByCategoryBetweenYears(category.toUpperCase(), start, end);
+	}
+	@GetMapping("/search/category-year")
 	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") String year) {
 		try {
 			category = category.replaceAll("[-_]"," ");
@@ -377,7 +385,7 @@ public class newMovieController {
 		}
 		catch (Exception e){
 			//List<Movie> temp = new ArrayList<Movie>();
-			return topicService.findByCategory(category);
+			return topicService.findByCategory(category.toUpperCase());
 		}
 	}
 	// search function api

@@ -114,6 +114,9 @@ public class MovieService {
     public List<Movie> findNominationsByCategoryAndYear(String award, int year) {
     	return updateSearchedResults(repo.findNominationsByYear(award, year));
     }
+    public List<Movie> findNominationsBetweenYears(int start, int end) {
+    	return updateSearchedResults(repo.findByYearNominatedBetween(start, end));
+    }
     //possible method to use for custom searches
     public List<Movie> findByTitle(String title) {
     	//need to use _ since some movies use - in the title and the path would be messy
@@ -126,6 +129,9 @@ public class MovieService {
     }
     public List<Movie> findByTitleAndCategoryAndYear(String category, String title, int year) {
     	return updateSearchedResults(repo.findNominationsByTitleAndYear(category, title, year));
+    }
+    public List<Movie> findByCategoryBetweenYears(String category, int start, int end) {
+    	return updateSearchedResults(repo.findBetweenYearsAndByCategory(start, end, category));
     }
     //haven't tested this yet
     public void updateMovieInDatabase(int id, Movie mov) {
