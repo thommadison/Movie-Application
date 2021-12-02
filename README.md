@@ -15,4 +15,4 @@ Credits:
 
 This product uses the TMDB API but is not endorsed or certified by TMDB.
 
-<p style="font-size:0.5em">If it works, it works ¯\_(ツ)_/¯</p>
+<p>If it works, it works ¯\_(ツ)_/¯</p>
