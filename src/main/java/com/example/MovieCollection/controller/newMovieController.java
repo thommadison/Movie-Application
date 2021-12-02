@@ -371,11 +371,12 @@ public class newMovieController {
 	}
 	@RequestMapping("/range/start/{start}/end/{end}")
 	public List<Movie> getMoviesWithinRange(@PathVariable int start, @PathVariable int end) {
-		return topicService.findNominationsBetweenYears(start, end);
+        return topicService.findNominationsBetweenYears(start, end);
 	}
 	@RequestMapping("/category/{category}/start/{start}/end/{end}")
 	public List<Movie> getNominationTypeWithinRange(@PathVariable String category, @PathVariable int start, @PathVariable int end) {
-		return topicService.findByCategoryBetweenYears(category.toUpperCase(), start, end);
+		category = category.replaceAll("[-_]"," ");
+        return topicService.findByCategoryBetweenYears(category.toUpperCase(), start, end);
 	}
 	@GetMapping("/search/category-year")
 	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") String year) {
