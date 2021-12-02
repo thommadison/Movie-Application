@@ -39,7 +39,6 @@
                         <li><a class="dropdown-item" href="/awardmovies/category/assistant-director">Assistant director</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/category/best-motion-picture">Best motion picture</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/category/best-picture">Best picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/category/best-picture">Best picture</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/category/cinematography">Cinematography</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/category/costume-design">Costume design</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/category/dance-direction">Dance direction</a></li>
@@ -69,13 +68,12 @@
                         Winner-Category
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/awardmovies/winning/animated-feature/2020">Animated feature</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/animated-feature">Animated feature</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/actor/2020">Actor</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/actress/2020">Actress</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/art-direction/2020">Art direction</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/assistant-director/2020">Assistant director</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/best-motion-picture/2020">Best motion picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/winning/best-picture/2020">Best picture</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/best-picture/2020">Best picture</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/cinematography/2020">Cinematography</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/costume-design/2020">Costume design</a></li>
@@ -125,6 +123,7 @@
                     <div style="min-height: 100px;">
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">
                             <div class="card card-body" style="width: 400px; color:black;">
+                                <table>
                                 <form class="d-flex" role="search" id="form1">
                                     <!--<select class="form-select" aria-label="Search" placeholder="Search" type="search" id="year" name="y" onchange="yearSelect()" style="width: 100px;">
                                         <option selected>Year</option>
@@ -133,6 +132,17 @@
                                         <option value="2018">2018</option>
                                     </select>-->
                                     <input class="form-control me-2" type="search" id="year" name="y" placeholder="Year" aria-label="Search" maxlength="4">
+                                    <p>
+                                        <a class="btn btn-outline-success" data-bs-toggle="collapse" id="range" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                          Use range
+                                        </a>
+                                    </p>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card card-body">
+                                            <input class="form-control me-2" type="search" id="fromYear" name="fy" placeholder="From" aria-label="Search" maxlength="4">
+                                            <input class="form-control me-2" type="search" id="toYear" name="ty" placeholder="To" aria-label="Search" maxlength="4">
+                                        </div>
+                                    </div>
                                     <select class="form-select" aria-label="Search" type="search" id="category" name="c" onchange="categorySelect()">
                                         <option selected>Category</option>
                                         <option value="animated-feature">Animated feature</option>
@@ -170,7 +180,9 @@
                                         <label class="btn btn-outline-success" for="winner">Winner</label>
                                     </div>
                                     <button class="btn btn-outline-success" type="submit">Search</button>
+
                                 </form>
+                                </table>
                             </div>
                         </div>
                     </div>
