@@ -45,6 +45,9 @@
     padding: 10px;
     border-radius: 10px;
     outline: none !important;
+}
+
+input:hover {
     border-width: 1px;
     box-shadow: 0 0 10px green;
 }
