@@ -133,6 +133,9 @@ public class MovieService {
     public List<Movie> findByCategoryBetweenYears(String category, int start, int end) {
     	return updateSearchedResults(repo.findBetweenYearsAndByCategory(start, end, category));
     }
+    public List<Movie> findWinnersByCategory(String category) {
+    	return updateSearchedResults(repo.findByAwardStatusTrueAndCategoryContaining(category));
+    }
     //haven't tested this yet
     public void updateMovieInDatabase(int id, Movie mov) {
     	Movie temp = repo.findById(id);

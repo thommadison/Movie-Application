@@ -26,4 +26,6 @@ public interface MovieRepo extends CrudRepository<Movie,Integer> {
 	List<Movie> findByYearNominatedBetween(int start, int end);
 	@Query("FROM Movie WHERE category LIKE %?3% AND yearNominated BETWEEN ?1 AND ?2")
 	List<Movie> findBetweenYearsAndByCategory(int start, int end, String category);
+	//@Query("FROM Movie WHERE category LIKE %?1% AND award_status=true")
+	List<Movie> findByAwardStatusTrueAndCategoryContaining(String category);
 }

@@ -360,15 +360,11 @@ public class newMovieController {
 	}
 	//possible method to reduce amount of REST Endpoints
 	@RequestMapping("/category/{category}/year/{year}")
-	public List<Movie> getCategoryAndYear(@PathVariable String category, @PathVariable String year) {
-		try {
-			category = category.replaceAll("[-_]"," ");
-			return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), Integer.parseInt(year));
-		}
-		catch(Exception e) {
-			return getCategory(category);
-		}
+	public List<Movie> getCategoryAndYear(@PathVariable String category, @PathVariable int year) {
+		category = category.replaceAll("[-_]"," ");
+		return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), year);
 	}
+	//@RequestMapping("/title/{title}")
 	@RequestMapping("/range/start/{start}/end/{end}")
 	public List<Movie> getMoviesWithinRange(@PathVariable int start, @PathVariable int end) {
 		return topicService.findNominationsBetweenYears(start, end);
@@ -377,16 +373,15 @@ public class newMovieController {
 	public List<Movie> getNominationTypeWithinRange(@PathVariable String category, @PathVariable int start, @PathVariable int end) {
 		return topicService.findByCategoryBetweenYears(category.toUpperCase(), start, end);
 	}
+	@RequestMapping("/winning/category/{category}")
+	public List<Movie> getWinnersByCategory(@PathVariable String category) {
+		category = category.replaceAll("[-_]"," ").toUpperCase();
+		return topicService.findWinnersByCategory(category);
+	}
 	@GetMapping("/search/category-year")
-	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") String year) {
-		try {
-			category = category.replaceAll("[-_]"," ");
-			return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), Integer.parseInt(year));
-		}
-		catch (Exception e){
-			//List<Movie> temp = new ArrayList<Movie>();
-			return topicService.findByCategory(category.toUpperCase());
-		}
+	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") int year) {
+		category = category.replaceAll("[-_]"," ");
+		return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), year);
 	}
 	// search function api
     @GetMapping("/search-movie")
