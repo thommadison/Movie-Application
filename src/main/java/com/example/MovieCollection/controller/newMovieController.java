@@ -367,11 +367,12 @@ public class newMovieController {
 	//@RequestMapping("/title/{title}")
 	@RequestMapping("/range/start/{start}/end/{end}")
 	public List<Movie> getMoviesWithinRange(@PathVariable int start, @PathVariable int end) {
-		return topicService.findNominationsBetweenYears(start, end);
+        return topicService.findNominationsBetweenYears(start, end);
 	}
 	@RequestMapping("/category/{category}/start/{start}/end/{end}")
 	public List<Movie> getNominationTypeWithinRange(@PathVariable String category, @PathVariable int start, @PathVariable int end) {
-		return topicService.findByCategoryBetweenYears(category.toUpperCase(), start, end);
+		category = category.replaceAll("[-_]"," ");
+        return topicService.findByCategoryBetweenYears(category.toUpperCase(), start, end);
 	}
 	@RequestMapping("/winning/category/{category}")
 	public List<Movie> getWinnersByCategory(@PathVariable String category) {

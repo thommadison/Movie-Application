@@ -59,3 +59,29 @@
 {
     width: 80px;
 }
+
+#fromYear
+{
+    width: 80px;
+}
+
+#toYear
+{
+    width: 80px;
+}
+
+#category
+{
+    width: 220px;
+}
+
+#collapseExample
+{
+    width: 220px;
+}
+
+#asCardBody
+{
+    width: 300px; 
+    color:black;
+}
