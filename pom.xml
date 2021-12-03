@@ -13,8 +13,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>validating-form-input</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
 		<java.version>11</java.version>
+            <!-- Project-specific properties -->
+            <exec.mainClass>com.example.MovieCollection.MovieApplication</exec.mainClass>
+            <googleCloudProjectId>Movie-Application</googleCloudProjectId>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -67,7 +71,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            
 		</plugins>
+
 	</build>
 
 </project>
