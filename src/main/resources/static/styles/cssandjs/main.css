@@ -40,6 +40,26 @@
     font-size: 16px;
 }
 
+.error-container
+{
+	opacity: 1.0;
+	min-height: 100vh;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.error-box
+{
+	height: 50vh;
+	width: 50vh;
+	background-color:  #d68910;
+	display:flex;
+	align-items: center;
+	text-align: center;
+	padding: 5vh;
+	position: relative;
+}
+
 #query
 {
     padding: 10px;

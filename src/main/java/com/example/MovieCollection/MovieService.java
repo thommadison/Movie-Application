@@ -25,15 +25,14 @@ import javax.persistence.Column;
 @Service
 public class MovieService {
 		@Autowired
-		//initialized as null for some reason until I add PostConstruct on voidinitMovieCollection & leave constructor for MovieService empty
         private MovieRepo repo; 
-		//@Autowired
-		//private List<Movie> movies = new ArrayList<Movie>();
-		//@Autowired
 		private TmdbSearch searchApi = new TmdbApi("01b13b38fd2da4ca845144d2cedd9762").getSearch();
-		
+		private static String MIN_CATEGORY_ERROR = "Title cannot be less than 3 characters.";
+		private static String MIN_TITLE_ERROR = "Title cannot be less than 3 characters.";
+		private static String RANGE_ERROR = "Starting year cannot be less than ending year";
         public MovieService() {
         }
+        //initializes & puts all data from .csv file into database
         @PostConstruct
         public void initMovieCollection() {
         	String path = "the_oscar_award.csv";
@@ -43,17 +42,17 @@ public class MovieService {
     			//reads line to skip category portion of file
     			line = csvReader.readNext();
     			if(line!=null) {
-    				int id = 1;
+    				//int id = 1;
         			//boolean skip = false;
     				while((line = csvReader.readNext()) != null) {
     					//0:yearReleased, 1:yearNominated, 3:category, 4:awardee, 5:title, 6:awardStatus
     					if(line[5] == null)
     						line[5] = "N/A";
     					//id, title, category, yearReleased, yearNominated, awardee, status
-    					Movie mov = new Movie(id,line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
+    					Movie mov = new Movie(line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
     					//movies.add(mov);
     					repo.save(mov);
-    					id++;
+    					//id++;
     				}
     			}
     		} catch(FileNotFoundException e) {
@@ -68,7 +67,8 @@ public class MovieService {
         public String getWatchLink(int tmdbId) {
         	return "https://www.themoviedb.org/movie/" + tmdbId+"/watch";
         }
-        
+    //when searching for movie(s), updates untouched records w/ data from TMDB API
+    //would have taken forever to load up at start otherwise    
     public List<Movie> updateSearchedResults(List<Movie> list) {
     	for(int i = 0; i < list.size(); i++) {
     		Movie mov = list.get(i);
@@ -93,62 +93,109 @@ public class MovieService {
     	}
     	return list;
     }
-    //DATABASE METHODS
-    public Movie findById(int id) {
+    //DATABASE QUERY METHODS
+    public Movie findById(int id) throws IllegalArgumentException {
+    	if(id < 1)
+    		throw new IllegalArgumentException("Id cannot be less than 1");
     	List<Movie> temp = new ArrayList<Movie>();
     	temp.add(repo.findById(id));
     	return updateSearchedResults(temp).get(0);
     }
-    public void deleteMovieByIdFromDatabase(int id) {
-    	repo.deleteById(id);
+    public boolean deleteMovieByIdFromDatabase(int id) {
+    	Movie temp;
+    	if(id < 1 || (temp = repo.findById(id)) == null)
+    		return false;
+    	else {
+    		repo.deleteById(id);
+    		return true;
+    	}
     }
-    public void addMovieToDatabase(Movie mov) {
-    	repo.save(mov);
+    public boolean addMovieToDatabase(Movie mov) {
+    	Movie temp;
+    	if(mov.getId() < 1 || (temp = repo.findById(mov.getId())) != null)
+    		return false;
+    	else {
+    		repo.save(mov);
+    		return true;
+    	}
     }
     public List<Movie> findByYear(int year) {
     	return updateSearchedResults(repo.findByYear(year));
     }
-    public List<Movie> findWinnersByCategory(String award, int year) {
-    	return updateSearchedResults(repo.findWinnerByYear(award, year));
+    public List<Movie> findWinnersByCategory(String category, int year) throws IllegalArgumentException {
+    	category = category.replaceAll("[-_]"," ").toUpperCase();
+    	if(category.length() < 5)
+    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
+    	return updateSearchedResults(repo.findWinnerByYear(category, year));
     }
-    public List<Movie> findNominationsByCategoryAndYear(String award, int year) {
-    	return updateSearchedResults(repo.findNominationsByYear(award, year));
+    public List<Movie> findNominationsByCategoryAndYear(String category, int year) throws IllegalArgumentException {
+    	category = category.replaceAll("[-_]"," ").toUpperCase();
+    	if(category.length() < 5)
+    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
+    	return updateSearchedResults(repo.findNominationsByYear(category, year));
     }
-    public List<Movie> findNominationsBetweenYears(int start, int end) {
+    public List<Movie> findNominationsBetweenYears(int start, int end) throws IllegalArgumentException {
+    	if(start > end)
+    		throw new IllegalArgumentException(RANGE_ERROR);
     	return updateSearchedResults(repo.findByYearNominatedBetween(start, end));
     }
     //possible method to use for custom searches
-    public List<Movie> findByTitle(String title) {
+    public List<Movie> findByTitle(String title) throws IllegalArgumentException {
+    	if(title.length() < 3)
+    		throw new IllegalArgumentException(MIN_TITLE_ERROR);
     	//need to use _ since some movies use - in the title and the path would be messy
     	String searchTitle = title.replaceAll("_", " ");
     	//System.out.println(searchTitle);
     	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(searchTitle));
     }
-    public List<Movie> findByCategory(String category) {
+    public List<Movie> findByCategory(String category) throws IllegalArgumentException {
+    	category = category.replaceAll("[-_]"," ").toUpperCase();
+    	if(category.length() < 5)
+    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
     	return updateSearchedResults(repo.findByCategoryContainingIgnoreCase(category));
     }
-    public List<Movie> findByTitleAndCategoryAndYear(String category, String title, int year) {
+    public List<Movie> findByTitleAndCategoryAndYear(String category, String title, int year) throws IllegalArgumentException {
+    	category = category.replaceAll("[-_]"," ").toUpperCase();
+    	if(category.length() < 5 && title.length() <3)
+    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR + " " +  MIN_TITLE_ERROR);
+    	if(category.length() < 5)
+    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
+    	if(title.length() < 3)
+    		throw new IllegalArgumentException(MIN_TITLE_ERROR);
     	return updateSearchedResults(repo.findNominationsByTitleAndYear(category, title, year));
     }
-    public List<Movie> findByCategoryBetweenYears(String category, int start, int end) {
+    public List<Movie> findByCategoryBetweenYears(String category, int start, int end) throws IllegalArgumentException {
+    	if(start > end)
+    		throw new IllegalArgumentException(RANGE_ERROR);
+    	category = category.replaceAll("[-_]"," ").toUpperCase();
+    	if(category.length() < 5)
+    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
     	return updateSearchedResults(repo.findBetweenYearsAndByCategory(start, end, category));
     }
-    public List<Movie> findWinnersByCategory(String category) {
+    public List<Movie> findWinnersByCategory(String category) throws IllegalArgumentException {
+    	category = category.replaceAll("[-_]"," ").toUpperCase();
+    	if(category.length() < 5)
+    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
     	return updateSearchedResults(repo.findByAwardStatusTrueAndCategoryContaining(category));
     }
     //haven't tested this yet
-    public void updateMovieInDatabase(int id, Movie mov) {
+    public boolean updateMovieInDatabase(int id, Movie mov) {
     	Movie temp = repo.findById(id);
-    	temp.setAwardee(mov.getAwardee());
-    	temp.setAwardStatus(mov.isAwardStatus());
-    	temp.setCategory(mov.getCategory());
-    	temp.setImageLink(mov.getImageLink());
-    	temp.setLink(mov.getLink());
-    	temp.setPlot(mov.getPlot());
-    	temp.setTitle(mov.getTitle());
-    	temp.setTmdbId(mov.getTmdbId());
-    	temp.setYearNominated(mov.getYearNominated());
-    	temp.setYearReleased(mov.getYearReleased());
-    	repo.save(temp);
+    	if(id < 1 || temp == null)
+    		return false;
+    	else {
+    		temp.setAwardee(mov.getAwardee());
+    		temp.setAwardStatus(mov.isAwardStatus());
+    		temp.setCategory(mov.getCategory());
+    		temp.setImageLink(mov.getImageLink());
+    		temp.setLink(mov.getLink());
+    		temp.setPlot(mov.getPlot());
+    		temp.setTitle(mov.getTitle());
+    		temp.setTmdbId(mov.getTmdbId());
+    		temp.setYearNominated(mov.getYearNominated());
+    		temp.setYearReleased(mov.getYearReleased());
+    		repo.save(temp);
+    		return true;
+    	}
     }
 }

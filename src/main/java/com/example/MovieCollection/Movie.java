@@ -32,8 +32,8 @@ public class Movie {
 
     //constructors
     //constructor using data from .csv file
-    public Movie(int id, String title, String category, int yearReleased, int yearNominated, String awardee, boolean awardStatus) {
-        this.id = id;
+    public Movie(String title, String category, int yearReleased, int yearNominated, String awardee, boolean awardStatus) {
+        //this.id = id;
         this.title = title;
         this.category = category;
         this.yearReleased = yearReleased;

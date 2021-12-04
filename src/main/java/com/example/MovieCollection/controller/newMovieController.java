@@ -77,20 +77,6 @@ public class newMovieController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
 		return modelAndView;
-		// testing 
-		/*Arrays.asList(
-			topicService.findById(1),
-			topicService.findById(2),
-			topicService.findById(3),
-			topicService.findById(4),
-			topicService.findById(5),
-			topicService.findById(6),
-			topicService.findById(7),
-			topicService.findById(8),
-			topicService.findById(9),
-			topicService.findById(10)
-			
-		);*/
 	}
 	// api document page holder
 	@RequestMapping("/apiDoc")
@@ -410,4 +396,14 @@ public class newMovieController {
     public void deleteMovie(@PathVariable int id){
         topicService.deleteMovieByIdFromDatabase(id);
     }
+    //handles illegal arguments to let the user know
+    @ExceptionHandler({IllegalArgumentException.class})
+    public ModelAndView argumentError(Exception e, Model model) {
+    	model.addAttribute("error", e.getMessage());
+    	ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("illegalArgument");
+		return modelAndView;
+    }
+    
+    
 }
