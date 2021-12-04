@@ -11,10 +11,11 @@
 </head>
 <body class="p-3 mb-2 bg-dark text-white">
     <header>
-        <!-- navigation bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <!-- navigation bar -->
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/awardmovies/index" style="color:gold;font-size:40px;"><b>Oscars Nomination</b></a>
+                <img th:src="@{https://seeklogo.com/images/O/oscar-logo-AECAAC69D7-seeklogo.com.png}" width="80px"/>
+                <a class="navbar-brand" href="/awardmovies/index" style="color: rgb(185, 165, 50);">Oscars Nomination</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,50 +32,48 @@
                         Category
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/awardmovies/animated-feature/2020">Animated feature</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/actor/2020">Actor</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/actress/2020">Actress</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/art-direction/2020">Art direction</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/assistant-director/2020">Assistant director</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/best-motion-picture/2020">Best motion picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/best-picture/2020">Best picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/best-picture/2020">Best picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/cinematography/2020">Cinematography</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/costume-design/2020">Costume design</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/dance-direction/2020">Dance direction</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/directing/2020">Directing</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/documentary/2020">Documentary</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/engineering-effects/2020">Engineering effects</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/film-editing/2020">Film editing</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/foreign-film/2020">Foreign film</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/international-film/2020">International film</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/makeup/2020">Makeup</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/music/2020">Music</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/outstanding-motion-picture/2020">Outstanding motion picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/outstanding-picture/2020">Outstanding picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/outstanding-production/2020">Outstanding production</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/short-film/2020">Short film</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/short-subject/2020">Short subject</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/sound/2020">Sound</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/sound-editing/2020">Sound editing</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/sound-recording/2020">Sound recording</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/special-effects/2020">Special effects</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/visual-effects/2020">Visual effects</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/writing/2020">Writing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/animated-feature">Animated feature</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/actor">Actor</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/actress">Actress</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/art-direction">Art direction</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/assistant-director">Assistant director</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/best-motion-picture">Best motion picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/best-picture">Best picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/cinematography">Cinematography</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/costume-design">Costume design</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/dance-direction">Dance direction</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/directing">Directing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/documentary">Documentary</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/engineering-effects">Engineering effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/film-editing">Film editing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/foreign-film">Foreign film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/international-film">International film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/makeup">Makeup</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/music">Music</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/outstanding-motion-picture">Outstanding motion picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/outstanding-picture">Outstanding picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/outstanding-production">Outstanding production</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/short-film">Short film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/short-subject">Short subject</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/sound">Sound</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/sound-editing">Sound editing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/sound-recording">Sound recording</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/special-effects">Special effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/visual-effects">Visual effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/writing">Writing</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Winning-Category
+                        Winner-Category
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/awardmovies/winning/animated-feature/2020">Animated feature</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/animated-feature">Animated feature</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/actor/2020">Actor</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/actress/2020">Actress</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/art-direction/2020">Art direction</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/assistant-director/2020">Assistant director</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/best-motion-picture/2020">Best motion picture</a></li>
-                        <li><a class="dropdown-item" href="/awardmovies/winning/best-picture/2020">Best picture</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/best-picture/2020">Best picture</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/cinematography/2020">Cinematography</a></li>
                         <li><a class="dropdown-item" href="/awardmovies/winning/costume-design/2020">Costume design</a></li>
@@ -118,30 +117,52 @@
                         <input class="form-control me-2" type="search" id="query" name="q" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                    <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <button class="btn btn-outline-success" type="button" id="asbtn" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                         Advanced Search
                     </button>
                     <div style="min-height: 100px;">
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">
-                            <div class="card card-body" style="width: 400px; color:black">
+                            <div class="card card-body" id="asCardBody">
+                                <table>
                                 <form class="d-flex" role="search" id="form1">
-                                    <!--<select class="form-select" aria-label="Search" placeholder="Search" type="search" id="year" name="y" onchange="yearSelect()" style="width: 100px;">
-                                        <option selected>Year</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2018">2018</option>
-                                    </select>-->
-                                    <input class="form-control me-2" type="search" id="year" name="y" placeholder="Year" aria-label="Search" maxlength="4">
-                                    <select class="form-select" aria-label="Search" type="search" id="category" name="c" onchange="categorySelect()">
-                                        <option selected>Category</option>
-                                        <optgroup label="Nominated">
+                                    <div class="mb-2">
+                                        <div class="row g-2 align-items-center">
+                                            <div class="col-auto">
+                                                <input class="form-control me-2" type="search" id="year" name="y" placeholder="Year" aria-label="Search" maxlength="4">
+                                            </div>
+                                            <div class="col-auto">
+                                                <span id="yearInstr" class="form-text">
+                                                    Must be 1980-2020
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <a class="btn btn-outline-success" data-bs-toggle="collapse" id="range" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            Use range
+                                        </a>
+                                        <div class="collapse" id="collapseExample">
+                                            <div class="card card-body">
+                                                <div class="row g-2 align-items-center">
+                                                    <div class="col-auto">
+                                                        <input class="form-control me-2" type="search" id="fromYear" name="fy" placeholder="From" aria-label="Search" maxlength="4">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <input class="form-control me-2" type="search" id="toYear" name="ty" placeholder="To" aria-label="Search" maxlength="4">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <select class="form-select" aria-label="Search" type="search" id="category" name="c" onchange="categorySelect()">
+                                            <option selected>Category</option>
                                             <option value="animated-feature">Animated feature</option>
                                             <option value="actor">Actor</option>
                                             <option value="actress">Actress</option>
                                             <option value="art-direction">Art direction</option>
                                             <option value="assistant-director">Assistant director</option>
                                             <option value="best-motion-picture">Best motion picture</option>
-                                            <option value="best-picture">Best picture</option>
                                             <option value="best-picture">Best picture</option>
                                             <option value="cinematography">Cinematography</option>
                                             <option value="costume-design">Costume design</option>
@@ -165,42 +186,28 @@
                                             <option value="special-effects">Special effects</option>
                                             <option value="visual-effects">Visual effects</option>
                                             <option value="writing">Writing</option>
-                                        </optgroup>
-                                        <optgroup label="Winning">
-                                            <option value="winning/animated-feature">Animated feature</option>
-                                            <option value="winning/actor">Actor</option>
-                                            <option value="winning/actress">Actress</option>
-                                            <option value="winning/art-direction">Art direction</option>
-                                            <option value="winning/assistant-director">Assistant director</option>
-                                            <option value="winning/best-motion-picture">Best motion picture</option>
-                                            <option value="winning/best-picture">Best picture</option>
-                                            <option value="winning/best-picture">Best picture</option>
-                                            <option value="winning/cinematography">Cinematography</option>
-                                            <option value="winning/costume-design">Costume design</option>
-                                            <option value="winning/dance-direction">Dance direction</option>
-                                            <option value="winning/directing">Directing</option>
-                                            <option value="winning/documentary">Documentary</option>
-                                            <option value="winning/engineering-effects">Engineering effects</option>
-                                            <option value="winning/film-editing">Film editing</option>
-                                            <option value="winning/foreign-film">Foreign film</option>
-                                            <option value="winning/international-film">International film</option>
-                                            <option value="winning/makeup">Makeup</option>
-                                            <option value="winning/music">Music</option>
-                                            <option value="winning/outstanding-motion-picture">Outstanding motion picture</option>
-                                            <option value="winning/outstanding-picture">Outstanding picture</option>
-                                            <option value="winning/outstanding-production">Outstanding production</option>
-                                            <option value="winning/short-film">Short film</option>
-                                            <option value="winning/short-subject">Short subject</option>
-                                            <option value="winning/sound">Sound</option>
-                                            <option value="winning/sound-editing">Sound editing</option>
-                                            <option value="winning/sound-recording">Sound recording</option>
-                                            <option value="winning/special-effects">Special effects</option>
-                                            <option value="winning/visual-effects">Visual effects</option>
-                                            <option value="winning/writing">Writing</option>
-                                        </optgroup>
-                                    </select>
-                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                        </select>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="row g-2 align-items-center">
+                                            <div class="col-auto">
+                                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                    <input type="checkbox" class="btn-check" id="winner" autocomplete="off">
+                                                    <label class="btn btn-outline-success" for="winner">Winner</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <span id="winnerCheckboxInstr" class="form-text">
+                                                    Check to show only winner
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <button class="btn btn-outline-success" type="submit">Search</button>
+                                    </div>
                                 </form>
+                                </table>
                             </div>
                         </div>
                     </div>
