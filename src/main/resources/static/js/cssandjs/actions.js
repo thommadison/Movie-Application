@@ -7,6 +7,8 @@ const SITE = 'awardmovies/';
 const SEARCH = 'search-movie?';
 const TITLE = 'Title=';
 const WINNER = 'winning/';
+const CATEGORY = 'category/';
+const YEAR = 'year/';
 let y = document.getElementById('year');
 let fy = document.getElementById('fromYear');
 let ty = document.getElementById('toYear');
@@ -72,10 +74,11 @@ function submitted1(event) {
         else if (y.value < 1980 || y.value > 2020)
             alert("Incorrect input. Input year should be between 1980-2020.");
         else if (document.querySelector('#winner:checked') !== null) {
-            searchWinnerCateUrl = DOMAIN + SITE + WINNER + category1 + "/" + y.value;
+            searchWinnerCateUrl = DOMAIN + SITE + WINNER + CATEGORY + category1 + "/" + YEAR + y.value;
             win = openTab(searchWinnerCateUrl);
         } else {
-            searchCateYearUrl = DOMAIN + SITE + category1 + "/" + y.value;
+            // searchCateYearUrl = DOMAIN + SITE + category1 + "/" + y.value;
+            searchCateYearUrl = DOMAIN + SITE + CATEGORY + category1 + "/" + YEAR + y.value;
             win = openTab(searchCateYearUrl);
         }
     } else {
@@ -88,7 +91,7 @@ function submitted1(event) {
         else if (fy.value >= ty.value)
             alert("Incorrect input. Input from year should be less than to year.");
         else {
-            searchRangeCateUrl = DOMAIN + SITE + 'category/' + category1 + "/start/" + fy.value + "/end/" + ty.value;
+            searchRangeCateUrl = DOMAIN + SITE + CATEGORY + category1 + "/start/" + fy.value + "/end/" + ty.value;
             win = openTab(searchRangeCateUrl);
         }
     }
