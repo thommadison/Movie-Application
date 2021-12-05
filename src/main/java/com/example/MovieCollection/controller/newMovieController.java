@@ -89,8 +89,9 @@ public class newMovieController {
 			return new Movie();
 	}
 	@RequestMapping("/category/{category}")
-	public List<Movie> getCategory(@PathVariable String category) {
-		return topicService.findByCategory(category);
+	public ModelAndView getCategory(@PathVariable String category, Model model){
+        List<Movie> movies = topicService.findByCategory(category);
+        return modelMaker(movies, model);
 	}
 	//possible method to reduce amount of REST Endpoints
 	@RequestMapping("/api/category/{category}/year/{year}")
