@@ -98,11 +98,11 @@ public class newMovieController {
 		return topicService.findNominationsByCategoryAndYear(category, year);
 	}
 	//possible method to reduce amount of REST Endpoints
-		@RequestMapping("/category/{category}/year/{year}")
-		public ModelAndView getCategoryAndYearWebsite(@PathVariable String category, @PathVariable int year, Model model) {
-			List<Movie> movies = topicService.findNominationsByCategoryAndYear(category, year);
-			return modelMaker(movies, model);
-		}
+	@RequestMapping("/category/{category}/year/{year}")
+	public ModelAndView getCategoryAndYearWebsite(@PathVariable String category, @PathVariable int year, Model model) {
+		List<Movie> movies = topicService.findNominationsByCategoryAndYear(category, year);
+		return modelMaker(movies, model);
+	}
 	@RequestMapping("/api/range/start/{start}/end/{end}")
 	public List<Movie> getMoviesWithinRange(@PathVariable int start, @PathVariable int end) {
         return topicService.findNominationsBetweenYears(start, end);
