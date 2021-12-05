@@ -73,6 +73,8 @@ function submitted1(event) {
             alert("Incorrect input. Input year is not a number.");
         else if (y.value < 1980 || y.value > 2020)
             alert("Incorrect input. Input year should be between 1980-2020.");
+        else if (category1 == undefined)
+            alert("Please select category");
         else if (document.querySelector('#winner:checked') !== null) {
             searchWinnerCateUrl = DOMAIN + SITE + WINNER + CATEGORY + category1 + "/" + YEAR + y.value;
             win = openTab(searchWinnerCateUrl);
@@ -90,6 +92,8 @@ function submitted1(event) {
             alert("Incorrect input. Input year should be between 1980-2020.");
         else if (fy.value >= ty.value)
             alert("Incorrect input. Input from year should be less than to year.");
+        else if (category1 == undefined)
+            alert("Please select category");
         else {
             searchRangeCateUrl = DOMAIN + SITE + CATEGORY + category1 + "/start/" + fy.value + "/end/" + ty.value;
             win = openTab(searchRangeCateUrl);
