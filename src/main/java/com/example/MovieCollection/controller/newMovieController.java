@@ -93,35 +93,70 @@ public class newMovieController {
 		return topicService.findByCategory(category);
 	}
 	//possible method to reduce amount of REST Endpoints
-	@RequestMapping("/category/{category}/year/{year}")
+	@RequestMapping("/api/category/{category}/year/{year}")
 	public List<Movie> getCategoryAndYear(@PathVariable String category, @PathVariable int year) {
 		return topicService.findNominationsByCategoryAndYear(category, year);
 	}
-	//@RequestMapping("/title/{title}")
-	@RequestMapping("/range/start/{start}/end/{end}")
+	//possible method to reduce amount of REST Endpoints
+		@RequestMapping("/category/{category}/year/{year}")
+		public ModelAndView getCategoryAndYearWebsite(@PathVariable String category, @PathVariable int year, Model model) {
+			List<Movie> movies = topicService.findNominationsByCategoryAndYear(category, year);
+			return modelMaker(movies, model);
+		}
+	@RequestMapping("/api/range/start/{start}/end/{end}")
 	public List<Movie> getMoviesWithinRange(@PathVariable int start, @PathVariable int end) {
         return topicService.findNominationsBetweenYears(start, end);
 	}
-	@RequestMapping("/category/{category}/start/{start}/end/{end}")
+	@RequestMapping("/range/start/{start}/end/{end}")
+	public ModelAndView getMoviesWithinRangeWeb(@PathVariable int start, @PathVariable int end, Model model) {
+        List<Movie> movies = topicService.findNominationsBetweenYears(start, end);
+        return modelMaker(movies, model);
+	}
+	@RequestMapping("/api/category/{category}/start/{start}/end/{end}")
 	public List<Movie> getNominationTypeWithinRange(@PathVariable String category, @PathVariable int start, @PathVariable int end) {
         return topicService.findByCategoryBetweenYears(category, start, end);
 	}
-	@RequestMapping("/winning/category/{category}")
+	@RequestMapping("/category/{category}/start/{start}/end/{end}")
+	public ModelAndView getNominationTypeWithinRangeWeb(@PathVariable String category, @PathVariable int start, @PathVariable int end, Model model) {
+        List<Movie> movies = topicService.findByCategoryBetweenYears(category, start, end);
+        return modelMaker(movies, model);
+	}
+	@RequestMapping("/api/winning/category/{category}")
 	public List<Movie> getWinnersByCategory(@PathVariable String category) {
 		return topicService.findWinnersByCategory(category);
 	}
-	@RequestMapping("/winning/category/{category}/year/{year}")
+	@RequestMapping("/winning/category/{category}")
+	public ModelAndView getWinnersByCategoryWeb(@PathVariable String category, Model model) {
+		List<Movie> movies = topicService.findWinnersByCategory(category);
+        return modelMaker(movies, model);
+	}
+	@RequestMapping("/api/winning/category/{category}/year/{year}")
 	public List<Movie> getWinnersByCategoryAndYear(@PathVariable String category, @PathVariable int year) {
 		return topicService.findWinnersByCategory(category, year);
 	}
-	@GetMapping("/search/category-year")
+	@RequestMapping("/winning/category/{category}/year/{year}")
+	public ModelAndView getWinnersByCategoryAndYearWeb(@PathVariable String category, @PathVariable int year, Model model) {
+		List<Movie> movies = topicService.findWinnersByCategory(category, year);
+		return modelMaker(movies, model);
+	}
+	@GetMapping("/api/search/category-year")
 	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") int year) {
 		return topicService.findNominationsByCategoryAndYear(category, year);
 	}
+	@GetMapping("/search/category-year")
+	public ModelAndView getSearchCategoryAndYearWeb(@RequestParam(name="category") String category, @RequestParam(name="year") int year, Model model) {
+		List<Movie> movies = topicService.findNominationsByCategoryAndYear(category, year);
+		return modelMaker(movies, model);
+	}
 	// search function api
-    @GetMapping("/search-movie")
+    @GetMapping("/api/search-movie")
     public List<Movie> getSearchResults(@RequestParam(name = "Title") String title) {
     	return topicService.findByTitle(title);
+    }
+    @GetMapping("/search-movie")
+    public ModelAndView getSearchResultsWeb(@RequestParam(name = "Title") String title, Model model) {
+    	List<Movie> movies = topicService.findByTitle(title);
+    	return modelMaker(movies, model);
     }
     // add movie
     @RequestMapping(method = RequestMethod.POST, value ="/add-movie")
@@ -147,5 +182,10 @@ public class newMovieController {
 		return modelAndView;
     }
     
-    
+    public ModelAndView modelMaker(List<Movie> mov, Model model) {
+    	model.addAttribute("movie", mov);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+		return modelAndView;
+    }
 }
