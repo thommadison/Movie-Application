@@ -4,6 +4,7 @@
 
 html {
     height: 100%;
+    width: 100%;
 }
 
 .navbar-brand
@@ -13,9 +14,15 @@ html {
     font-family: sans;
 }
 
+.container {
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+}
+
 .container-fluid
 {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .error-container
@@ -53,7 +60,7 @@ html {
 
 #query
 {
-    padding: 10px;
+    max-width: auto;
     border-radius: 10px;
     outline: none !important;
 }
@@ -63,10 +70,10 @@ input:hover {
     box-shadow: 0 0 10px green;
 }
 
-#asbtn
+#form
 {
-    margin: 10px;
-    padding: 10px;
+    size: 100px;
+    margin-right: 0%;
 }
 
 #year
@@ -96,7 +103,7 @@ input:hover {
 
 #asCardBody
 {
-    width: 300px; 
+    width: 250px; 
     color:black;
 }
 
