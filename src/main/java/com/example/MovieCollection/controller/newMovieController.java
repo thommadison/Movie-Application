@@ -15,7 +15,7 @@ import java.util.*;
 //@Controller
 @RequestMapping("/awardmovies")
 public class newMovieController {
-
+	private final static String[] SINGLETON_CATEGORIES = {""};
 	//categories for rewards
 	private final static String ACTOR = "ACTOR";
 	private final static String ACTRESS = "ACTRESS";
@@ -341,13 +341,11 @@ public class newMovieController {
     }
 	@RequestMapping("/category/{category}")
 	public List<Movie> getCategory(@PathVariable String category) {
-		category = category.replaceAll("[-_]"," ");
 		return topicService.findByCategory(category);
 	}
 	//possible method to reduce amount of REST Endpoints
 	@RequestMapping("/category/{category}/year/{year}")
 	public List<Movie> getCategoryAndYear(@PathVariable String category, @PathVariable int year) {
-		category = category.replaceAll("[-_]"," ");
 		return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), year);
 	}
 	//@RequestMapping("/title/{title}")
@@ -357,17 +355,18 @@ public class newMovieController {
 	}
 	@RequestMapping("/category/{category}/start/{start}/end/{end}")
 	public List<Movie> getNominationTypeWithinRange(@PathVariable String category, @PathVariable int start, @PathVariable int end) {
-		category = category.replaceAll("[-_]"," ");
         return topicService.findByCategoryBetweenYears(category.toUpperCase(), start, end);
 	}
 	@RequestMapping("/winning/category/{category}")
 	public List<Movie> getWinnersByCategory(@PathVariable String category) {
-		category = category.replaceAll("[-_]"," ").toUpperCase();
 		return topicService.findWinnersByCategory(category);
+	}
+	@RequestMapping("/winning/category/{category}/year/{year}")
+	public List<Movie> getWinnersByCategoryAndYear(@PathVariable String category, @PathVariable int year) {
+		return topicService.findWinnersByCategory(category, year);
 	}
 	@GetMapping("/search/category-year")
 	public List<Movie> getSearchCategoryAndYear(@RequestParam(name="category") String category, @RequestParam(name="year") int year) {
-		category = category.replaceAll("[-_]"," ");
 		return topicService.findNominationsByCategoryAndYear(category.toUpperCase(), year);
 	}
 	// search function api
@@ -375,12 +374,6 @@ public class newMovieController {
     public List<Movie> getSearchResults(@RequestParam(name = "Title") String title) {
     	return topicService.findByTitle(title);
     }
-	/*	// This RequestMapping overlapped with @RequestMapping("/animated-feature/{year}"), disabled it for now.
-    //return individual movie
-    @RequestMapping("/animatedfeature/{id}")
-    public Movie getMovie(@PathVariable int id){
-        return topicService.getMovie(id);
-    }*/
     // add movie
     @RequestMapping(method = RequestMethod.POST, value ="/add-movie")
     public void addMovie(@RequestBody Movie movie){

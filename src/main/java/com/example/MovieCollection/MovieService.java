@@ -49,7 +49,7 @@ public class MovieService {
     					if(line[5] == null)
     						line[5] = "N/A";
     					//id, title, category, yearReleased, yearNominated, awardee, status
-    					Movie mov = new Movie(line[5],line[3],Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
+    					Movie mov = new Movie(line[5],line[3].toUpperCase(),Integer.parseInt(line[0]),Integer.parseInt(line[1]),line[4],Boolean.parseBoolean(line[6]));
     					//movies.add(mov);
     					repo.save(mov);
     					//id++;
@@ -102,8 +102,7 @@ public class MovieService {
     	return updateSearchedResults(temp).get(0);
     }
     public boolean deleteMovieByIdFromDatabase(int id) {
-    	Movie temp;
-    	if(id < 1 || (temp = repo.findById(id)) == null)
+    	if(id < 1 || (repo.findById(id) == null))
     		return false;
     	else {
     		repo.deleteById(id);
@@ -111,8 +110,7 @@ public class MovieService {
     	}
     }
     public boolean addMovieToDatabase(Movie mov) {
-    	Movie temp;
-    	if(mov.getId() < 1 || (temp = repo.findById(mov.getId())) != null)
+    	if(mov.getId() < 1 || (repo.findById(mov.getId())) != null)
     		return false;
     	else {
     		repo.save(mov);
