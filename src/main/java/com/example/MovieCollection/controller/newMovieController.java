@@ -76,12 +76,12 @@ public class newMovieController {
     	return topicService.findById(id);
     }
 	//singleton api method
-	@RequestMapping("/singleton/category/{category}/year/{year}")
-	public Movie getSingleMovieByCategoryAndYear(@PathVariable String category, @PathVariable int year) {
+	@RequestMapping("/singleton/winning/category/{category}/year/{year}")
+	public Movie getSingleMovieWinnerByCategoryAndYear(@PathVariable String category, @PathVariable int year) {
 			category = category.replaceAll("[-_]"," ").toUpperCase();
 			for(int i = 0; i < SINGLETON_CATEGORIES.length; i++) {
 				if(category.equals(SINGLETON_CATEGORIES[i])) {
-					List<Movie> temp = topicService.findNominationsByCategoryAndYear(category, year);
+					List<Movie> temp = topicService.findWinnersByCategory(category, year);
 					if(temp!=null)
 						return temp.get(0);
 				}
