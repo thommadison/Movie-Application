@@ -23,13 +23,10 @@ import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 
 @Service
-public class MovieService {
+public class MovieService extends InputValidation {
 		@Autowired
         private MovieRepo repo; 
 		private TmdbSearch searchApi = new TmdbApi("01b13b38fd2da4ca845144d2cedd9762").getSearch();
-		private static String MIN_CATEGORY_ERROR = "Title cannot be less than 3 characters.";
-		private static String MIN_TITLE_ERROR = "Title cannot be less than 3 characters.";
-		private static String RANGE_ERROR = "Starting year cannot be less than ending year";
         public MovieService() {
         }
         //initializes & puts all data from .csv file into database
@@ -95,8 +92,7 @@ public class MovieService {
     }
     //DATABASE QUERY METHODS
     public Movie findById(int id) throws IllegalArgumentException {
-    	if(id < 1)
-    		throw new IllegalArgumentException("Id cannot be less than 1");
+    	iDValidation(id);
     	List<Movie> temp = new ArrayList<Movie>();
     	temp.add(repo.findById(id));
     	return updateSearchedResults(temp).get(0);
@@ -117,66 +113,7 @@ public class MovieService {
     		return true;
     	}
     }
-    public List<Movie> findByYear(int year) {
-    	return updateSearchedResults(repo.findByYear(year));
-    }
-    public List<Movie> findWinnersByCategory(String category, int year) throws IllegalArgumentException {
-    	category = category.replaceAll("[-_]"," ").toUpperCase();
-    	if(category.length() < 5)
-    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
-    	return updateSearchedResults(repo.findWinnerByYear(category, year));
-    }
-    public List<Movie> findNominationsByCategoryAndYear(String category, int year) throws IllegalArgumentException {
-    	category = category.replaceAll("[-_]"," ").toUpperCase();
-    	if(category.length() < 5)
-    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
-    	return updateSearchedResults(repo.findNominationsByYear(category, year));
-    }
-    public List<Movie> findNominationsBetweenYears(int start, int end) throws IllegalArgumentException {
-    	if(start > end)
-    		throw new IllegalArgumentException(RANGE_ERROR);
-    	return updateSearchedResults(repo.findByYearNominatedBetween(start, end));
-    }
-    //possible method to use for custom searches
-    public List<Movie> findByTitle(String title) throws IllegalArgumentException {
-    	if(title.length() < 3)
-    		throw new IllegalArgumentException(MIN_TITLE_ERROR);
-    	//need to use _ since some movies use - in the title and the path would be messy
-    	String searchTitle = title.replaceAll("_", " ");
-    	//System.out.println(searchTitle);
-    	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(searchTitle));
-    }
-    public List<Movie> findByCategory(String category) throws IllegalArgumentException {
-    	category = category.replaceAll("[-_]"," ").toUpperCase();
-    	if(category.length() < 5)
-    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
-    	return updateSearchedResults(repo.findByCategoryContainingIgnoreCase(category));
-    }
-    public List<Movie> findByTitleAndCategoryAndYear(String category, String title, int year) throws IllegalArgumentException {
-    	category = category.replaceAll("[-_]"," ").toUpperCase();
-    	if(category.length() < 5 && title.length() <3)
-    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR + " " +  MIN_TITLE_ERROR);
-    	if(category.length() < 5)
-    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
-    	if(title.length() < 3)
-    		throw new IllegalArgumentException(MIN_TITLE_ERROR);
-    	return updateSearchedResults(repo.findNominationsByTitleAndYear(category, title, year));
-    }
-    public List<Movie> findByCategoryBetweenYears(String category, int start, int end) throws IllegalArgumentException {
-    	if(start > end)
-    		throw new IllegalArgumentException(RANGE_ERROR);
-    	category = category.replaceAll("[-_]"," ").toUpperCase();
-    	if(category.length() < 5)
-    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
-    	return updateSearchedResults(repo.findBetweenYearsAndByCategory(start, end, category));
-    }
-    public List<Movie> findWinnersByCategory(String category) throws IllegalArgumentException {
-    	category = category.replaceAll("[-_]"," ").toUpperCase();
-    	if(category.length() < 5)
-    		throw new IllegalArgumentException(MIN_CATEGORY_ERROR);
-    	return updateSearchedResults(repo.findByAwardStatusTrueAndCategoryContaining(category));
-    }
-    //haven't tested this yet
+  //haven't tested this yet
     public boolean updateMovieInDatabase(int id, Movie mov) {
     	Movie temp = repo.findById(id);
     	if(id < 1 || temp == null)
@@ -195,5 +132,49 @@ public class MovieService {
     		repo.save(temp);
     		return true;
     	}
+    }
+    //below are methods to search for movies based on year nominated, category, award status, etc
+    public List<Movie> findByYear(int year) {
+    	yearNominatedValidation(year);
+    	return updateSearchedResults(repo.findByYear(year));
+    }
+    public List<Movie> findWinnersByCategory(String category, int year) {
+    	category = categoryLengthValidation(category);
+    	yearNominatedValidation(year);
+    	return updateSearchedResults(repo.findWinnerByYear(category, year));
+    }
+    public List<Movie> findNominationsByCategoryAndYear(String category, int year) {
+    	category = categoryLengthValidation(category);
+    	yearNominatedValidation(year);
+    	return updateSearchedResults(repo.findNominationsByYear(category, year));
+    }
+    public List<Movie> findNominationsBetweenYears(int start, int end) {
+    	dateRangeValidation(start, end);
+    	return updateSearchedResults(repo.findByYearNominatedBetween(start, end));
+    }
+    //possible method to use for custom searches
+    public List<Movie> findByTitle(String title) {
+    	title = titleLengthValidation(title);
+    	//need to use _ since some movies use - in the title and the path would be messy
+    	return updateSearchedResults(repo.findByTitleContainingIgnoreCase(title));
+    }
+    public List<Movie> findByCategory(String category) {
+    	category = categoryLengthValidation(category);
+    	return updateSearchedResults(repo.findByCategoryContainingIgnoreCase(category));
+    }
+    public List<Movie> findByTitleAndCategoryAndYear(String category, String title, int year) {
+    	category = categoryLengthValidation(category);
+    	title = titleLengthValidation(title);
+    	yearNominatedValidation(year);
+    	return updateSearchedResults(repo.findNominationsByTitleAndYear(category, title, year));
+    }
+    public List<Movie> findByCategoryBetweenYears(String category, int start, int end) {
+    	dateRangeValidation(start, end);
+    	category = categoryLengthValidation(category);
+    	return updateSearchedResults(repo.findBetweenYearsAndByCategory(start, end, category));
+    }
+    public List<Movie> findWinnersByCategory(String category) {
+    	category = categoryLengthValidation(category);
+    	return updateSearchedResults(repo.findByAwardStatusTrueAndCategoryContaining(category));
     }
 }
