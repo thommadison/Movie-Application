@@ -310,6 +310,23 @@
     <p>Output/Return:</p>
     <p>A singleton resource in JSON that displays the winner of that given category and year.</p>
     <p>The format of a JSON object follow the format of nomination by ID</p>
+    <hr>
+    <h2>Best Film Editing</h2>
+    <p>Finds the JSON objects related to Best Film Editing category.</p>
+    <p></p>
+    <p>Input:</p>
+    <p><b>1. http://localhost:8080/awardmovies/category/film-editing</b></p>
+    <p><b>2. http://localhost:8080/awardmovies/category/film-editing/year/[year]</b></p>
+    <p><b>3. http://localhost:8080/awardmovies/winning/category/film-editing/year/[year]</b></p>
+    <p><b>4. http://localhost:8080/awardmovies/category/film-editing/start/[from year]/end/[to year]</b></p>
+    <p>[year]: A Valid year will be integer with a value between 1928 and 2020.</p>
+    <p>[from year]: A Valid year will be integer with a value between 1928 and 2019 and less than [to year].</p>
+    <p>[to year]: A Valid year will be integer with a value between 1929 and 2020 and greater than [from year].</p>
+    <p>Output:</p>
+    <p>The first url return the list of movies which nominated for file-editing award from 1980-2020.</p>
+    <p>The second url return the list of movies which nominated for file-editing award from user's input year</p>
+    <p>The third url return one movie which is the winner of file-editing award from user's input year</p>
+    <p>The fourth url return the list of movies which nominated for file-editing award from user's input year within a range</p>
     </div>
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
