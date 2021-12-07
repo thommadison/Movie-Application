@@ -112,3 +112,17 @@ input:hover {
     font-weight: bold;
     font-family: Arial, sans-serif;
 }
+
+#tmdbLogo
+{
+    margin: 10px;
+    padding: auto;
+    height: 100px;
+}
+
+#slLogo
+{
+    margin: 10px;
+    padding: auto;
+    height: 100px;
+}
