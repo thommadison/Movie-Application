@@ -9,7 +9,7 @@ An application that will allow users to search any previously nominated and/or w
 
 Team Scrum Lords.
 <p>
-<img src="https://blogger.googleusercontent.com/img/a/AVvXsEhvKH7UIwnNETxc_HQvIM93Gm0jZm5slYkDEKBtoKEwocsE07EVAraHi5KJ0JEbTFKvHW9b0cdYh7aJzZfl49hYkxmvxVDyPz7sb-B6zXWZGPY0hsiC0hVFhmkkYFRMxC8kghMvqfqX4Hurx4GSTiWDYJFlTlMLqSMVaaqFRMSRpojo6GPLVElMZ5-Cbg=w640-h640" width="100">
+<img src="https://blogger.googleusercontent.com/img/a/AVvXsEjAL3fFWQJCaGFVAt5zpG0Thdk_wgGZDixLTAnbA3D3SGAxsDhKTz0Y1uEHK-zlAR9ply-Ph7JHLfzcaxIk2OjE9SqtvZCTAE-dculCedTOS4NgUs1uCAcKJl2YpJ10ub5kiMW-udM9Scs0XzlrQZLC6pmnSkKRHelnWFeqGivUTMa2f65MnfkTRPFUxQ=w640-h640" width="100">
 
 Credits:
 
