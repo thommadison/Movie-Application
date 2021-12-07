@@ -8,6 +8,8 @@ Csc 131 project
 An application that will allow users to search any previously nominated and/or winning Oscar movies by category of award. They want to make it easy for people to view those movies. So, in the search results, they would like to include a link to the movie’s website page at some provider of movie viewing choices such as IMDB, Hulu etc. Hold the project's code.
 
 Team Scrum Lords.
+<p>
+<img src="https://blogger.googleusercontent.com/img/a/AVvXsEjAL3fFWQJCaGFVAt5zpG0Thdk_wgGZDixLTAnbA3D3SGAxsDhKTz0Y1uEHK-zlAR9ply-Ph7JHLfzcaxIk2OjE9SqtvZCTAE-dculCedTOS4NgUs1uCAcKJl2YpJ10ub5kiMW-udM9Scs0XzlrQZLC6pmnSkKRHelnWFeqGivUTMa2f65MnfkTRPFUxQ=w640-h640" width="100">
 
 Credits:
 
