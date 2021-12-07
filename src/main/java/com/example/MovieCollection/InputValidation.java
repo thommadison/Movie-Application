@@ -45,6 +45,7 @@ public class InputValidation {
 			throw new IllegalArgumentException(MISMATCH_ID_ERROR);
 		}
 	}
+	//checks to see if inputted year is an integer
 	public static int yearTypeValidation(String year) throws IllegalArgumentException {
 		try {
 			return Integer.parseInt(year);
