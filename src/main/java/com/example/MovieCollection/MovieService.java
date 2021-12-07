@@ -91,8 +91,14 @@ public class MovieService extends InputValidation {
     	return list;
     }
     //DATABASE QUERY METHODS
-    public Movie findById(int id) throws IllegalArgumentException {
-    	iDValidation(id);
+    public Movie findByIdLoop(int id) throws IllegalArgumentException {
+    	//iDValidation(id);
+    	List<Movie> temp = new ArrayList<Movie>();
+    	temp.add(repo.findById(id));
+    	return updateSearchedResults(temp).get(0);
+    }
+    public Movie findById(String idInput) throws IllegalArgumentException {
+    	int id = iDValidation(idInput);
     	List<Movie> temp = new ArrayList<Movie>();
     	temp.add(repo.findById(id));
     	return updateSearchedResults(temp).get(0);
@@ -105,6 +111,7 @@ public class MovieService extends InputValidation {
     		return true;
     	}
     }
+    /*
     public boolean addMovieToDatabase(Movie mov) {
     	if(mov.getId() < 1 || (repo.findById(mov.getId())) != null)
     		return false;
@@ -133,22 +140,25 @@ public class MovieService extends InputValidation {
     		return true;
     	}
     }
+    */
     //below are methods to search for movies based on year nominated, category, award status, etc
-    public List<Movie> findByYear(int year) {
-    	yearNominatedValidation(year);
+    public List<Movie> findByYear(String yearInput) {
+    	int year = yearNominatedValidation(yearInput);
     	return updateSearchedResults(repo.findByYear(year));
     }
-    public List<Movie> findWinnersByCategory(String category, int year) {
+    public List<Movie> findWinnersByCategory(String category, String yearInput) {
     	category = categoryLengthValidation(category);
-    	yearNominatedValidation(year);
+    	int year = yearNominatedValidation(yearInput);
     	return updateSearchedResults(repo.findWinnerByYear(category, year));
     }
-    public List<Movie> findNominationsByCategoryAndYear(String category, int year) {
+    public List<Movie> findNominationsByCategoryAndYear(String category, String yearInput) {
     	category = categoryLengthValidation(category);
-    	yearNominatedValidation(year);
+    	int year = yearNominatedValidation(yearInput);
     	return updateSearchedResults(repo.findNominationsByYear(category, year));
     }
-    public List<Movie> findNominationsBetweenYears(int start, int end) {
+    public List<Movie> findNominationsBetweenYears(String startInput, String endInput) {
+    	int start = yearNominatedValidation(startInput);
+    	int end = yearNominatedValidation(endInput);
     	dateRangeValidation(start, end);
     	return updateSearchedResults(repo.findByYearNominatedBetween(start, end));
     }
@@ -162,13 +172,15 @@ public class MovieService extends InputValidation {
     	category = categoryLengthValidation(category);
     	return updateSearchedResults(repo.findByCategoryContainingIgnoreCase(category));
     }
-    public List<Movie> findByTitleAndCategoryAndYear(String category, String title, int year) {
+    public List<Movie> findByTitleAndCategoryAndYear(String category, String title, String yearInput) {
     	category = categoryLengthValidation(category);
     	title = titleLengthValidation(title);
-    	yearNominatedValidation(year);
+    	int year = yearNominatedValidation(yearInput);
     	return updateSearchedResults(repo.findNominationsByTitleAndYear(category, title, year));
     }
-    public List<Movie> findByCategoryBetweenYears(String category, int start, int end) {
+    public List<Movie> findByCategoryBetweenYears(String category, String startInput, String endInput) {
+    	int start = yearNominatedValidation(startInput);
+    	int end = yearNominatedValidation(endInput);
     	dateRangeValidation(start, end);
     	category = categoryLengthValidation(category);
     	return updateSearchedResults(repo.findBetweenYearsAndByCategory(start, end, category));
