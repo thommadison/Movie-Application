@@ -17,270 +17,207 @@
         <!-- navigation bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <img th:src="@{https://seeklogo.com/images/O/oscar-logo-AECAAC69D7-seeklogo.com.png}" width="80px" />
-                <a class="navbar-brand" href="/awardmovies/index" style="color: rgb(185, 165, 50);">Oscars
-                    Nomination</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <img th:src="@{https://seeklogo.com/images/O/oscar-logo-AECAAC69D7-seeklogo.com.png}" width="80px"/>
+                <a class="navbar-brand" href="/awardmovies/index" style="color: rgb(185, 165, 50);">Oscars Nomination</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/awardmovies/index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/awardmovies/apiDoc">API document</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Category
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/awardmovies/category/animated-feature">Animated
-                                        feature</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/actor">Actor</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/actress">Actress</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/art-direction">Art
-                                        direction</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/assistant-director">Assistant
-                                        director</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/best-motion-picture">Best
-                                        motion picture</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/best-picture">Best picture</a>
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/category/cinematography">Cinematography</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/costume-design">Costume
-                                        design</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/dance-direction">Dance
-                                        direction</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/directing">Directing</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/documentary">Documentary</a>
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/category/engineering-effects">Engineering effects</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/film-editing">Film editing</a>
-                                </li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/foreign-film">Foreign film</a>
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/category/international-film">International film</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/makeup">Makeup</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/music">Music</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/category/outstanding-motion-picture">Outstanding motion
-                                        picture</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/category/outstanding-picture">Outstanding picture</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/category/outstanding-production">Outstanding production</a>
-                                </li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/short-film">Short film</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/short-subject">Short
-                                        subject</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/sound">Sound</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/sound-editing">Sound
-                                        editing</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/sound-recording">Sound
-                                        recording</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/special-effects">Special
-                                        effects</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/visual-effects">Visual
-                                        effects</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/category/writing">Writing</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Winner-Category
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/awardmovies/winning/animated-feature">Animated
-                                        feature</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/actor/2020">Actor</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/actress/2020">Actress</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/art-direction/2020">Art
-                                        direction</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/assistant-director/2020">Assistant director</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/best-motion-picture/2020">Best
-                                        motion picture</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/best-picture/2020">Best
-                                        picture</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/cinematography/2020">Cinematography</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/costume-design/2020">Costume
-                                        design</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/dance-direction/2020">Dance
-                                        direction</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/directing/2020">Directing</a>
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/documentary/2020">Documentary</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/engineering-effects/2020">Engineering effects</a>
-                                </li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/film-editing/2020">Film
-                                        editing</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/foreign-film/2020">Foreign
-                                        film</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/international-film/2020">International film</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/makeup/2020">Makeup</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/music/2020">Music</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/outstanding-motion-picture/2020">Outstanding motion
-                                        picture</a></li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/outstanding-picture/2020">Outstanding picture</a>
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="/awardmovies/winning/outstanding-production/2020">Outstanding
-                                        production</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/short-film/2020">Short film</a>
-                                </li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/short-subject/2020">Short
-                                        subject</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/sound/2020">Sound</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/sound-editing/2020">Sound
-                                        editing</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/sound-recording/2020">Sound
-                                        recording</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/special-effects/2020">Special
-                                        effects</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/visual-effects/2020">Visual
-                                        effects</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/winning/writing/2020">Writing</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Nominated Year
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/awardmovies/year/2020">2020</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/year/2019">2019</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/year/2018">2018</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/year/2017">2017</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/year/2016">2016</a></li>
-                                <li><a class="dropdown-item" href="/awardmovies/year/2015">2015</a></li>
-                            </ul>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/awardmovies/index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/awardmovies/apiDoc">API Docs</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/awardmovies/category/animated-feature">Animated feature</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/actor">Actor</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/actress">Actress</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/art-direction">Art direction</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/assistant-director">Assistant director</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/best-motion-picture">Best motion picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/best-picture">Best picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/cinematography">Cinematography</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/costume-design">Costume design</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/dance-direction">Dance direction</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/directing">Directing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/documentary">Documentary</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/engineering-effects">Engineering effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/film-editing">Film editing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/foreign-film">Foreign film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/international-film">International film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/makeup">Makeup</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/music">Music</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/outstanding-motion-picture">Outstanding motion picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/outstanding-picture">Outstanding picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/outstanding-production">Outstanding production</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/short-film">Short film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/short-subject">Short subject</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/sound">Sound</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/sound-editing">Sound editing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/sound-recording">Sound recording</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/special-effects">Special effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/visual-effects">Visual effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/category/writing">Writing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Winner Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/animated-feature">Animated feature</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/actor">Actor</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/actress">Actress</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/art-direction">Art direction</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/assistant-director">Assistant director</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/best-motion-picture">Best motion picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/best-picture">Best picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/cinematography">Cinematography</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/costume-design">Costume design</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/dance-direction">Dance direction</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/directing">Directing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/documentary">Documentary</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/engineering-effects">Engineering effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/film-editing">Film editing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/foreign-film">Foreign film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/international-film">International film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/makeup">Makeup</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/music">Music</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/outstanding-motion-picture">Outstanding motion picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/outstanding-picture">Outstanding picture</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/outstanding-production">Outstanding production</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/short-film">Short film</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/short-subject">Short subject</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/sound">Sound</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/sound-editing">Sound editing</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/sound-recording">Sound recording</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/special-effects">Special effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/visual-effects">Visual effects</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/winning/category/writing">Writing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Nominated Year
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/awardmovies/year/2020">2020</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/year/2019">2019</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/year/2018">2018</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/year/2017">2017</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/year/2016">2016</a></li>
+                        <li><a class="dropdown-item" href="/awardmovies/year/2015">2015</a></li>
+                        </ul>
+                    </li>
                     </ul>
                     <form class="d-flex" role="search" id="form">
-                        <input class="form-control me-2" type="search" id="query" name="q" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <div class="mb-2">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                    <input class="form-control me-2" type="search" id="query" name="q" placeholder="Search" aria-label="Search">
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                    <button class="btn btn-outline-success" type="button" id="asbtn" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                    Advanced Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </form>
-                    <button class="btn btn-outline-success" type="button" id="asbtn" data-bs-toggle="collapse"
-                        data-bs-target="#collapseWidthExample" aria-expanded="false"
-                        aria-controls="collapseWidthExample">
-                        Advanced Search
-                    </button>
                     <div style="min-height: 100px;">
                         <div class="collapse collapse-horizontal" id="collapseWidthExample">
                             <div class="card card-body" id="asCardBody">
                                 <table>
-                                    <form class="d-flex" role="search" id="form1">
-                                        <div class="mb-2">
-                                            <div class="row g-2 align-items-center">
-                                                <div class="col-auto">
-                                                    <input class="form-control me-2" type="search" id="year" name="y"
-                                                        placeholder="Year" aria-label="Search" maxlength="4">
-                                                </div>
-                                                <div class="col-auto">
-                                                    <span id="yearInstr" class="form-text">
-                                                        Must be 1980-2020
-                                                    </span>
-                                                </div>
+                                <form class="d-flex" role="search" id="form1">
+                                    <div class="mb-2">
+                                        <div class="row g-2 align-items-center">
+                                            <div class="col-auto">
+                                                <input class="form-control me-2" type="search" id="year" name="y" placeholder="Year" aria-label="Search" maxlength="4">
+                                            </div>
+                                            <div class="col-auto">
+                                                <span id="yearInstr" class="form-text">
+                                                    Must be 1980-2020
+                                                </span>
                                             </div>
                                         </div>
-                                        <div class="mb-2">
-                                            <a class="btn btn-outline-success" data-bs-toggle="collapse" id="range"
-                                                href="#collapseExample" role="button" aria-expanded="false"
-                                                aria-controls="collapseExample">
-                                                Use range
-                                            </a>
-                                            <div class="collapse" id="collapseExample">
-                                                <div class="card card-body">
-                                                    <div class="row g-2 align-items-center">
-                                                        <div class="col-auto">
-                                                            <input class="form-control me-2" type="search" id="fromYear"
-                                                                name="fy" placeholder="From" aria-label="Search"
-                                                                maxlength="4">
-                                                        </div>
-                                                        <div class="col-auto">
-                                                            <input class="form-control me-2" type="search" id="toYear"
-                                                                name="ty" placeholder="To" aria-label="Search"
-                                                                maxlength="4">
-                                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <a class="btn btn-outline-success" data-bs-toggle="collapse" id="range" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                            Use range
+                                        </a>
+                                        <div class="collapse" id="collapseExample">
+                                            <div class="card card-body">
+                                                <div class="row g-2 align-items-center">
+                                                    <div class="col-auto">
+                                                        <input class="form-control me-2" type="search" id="fromYear" name="fy" placeholder="From" aria-label="Search" maxlength="4">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <input class="form-control me-2" type="search" id="toYear" name="ty" placeholder="To" aria-label="Search" maxlength="4">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mb-2">
-                                            <select class="form-select" aria-label="Search" type="search" id="category"
-                                                name="c" onchange="categorySelect()">
-                                                <option selected>Category</option>
-                                                <option value="animated-feature">Animated feature</option>
-                                                <option value="actor">Actor</option>
-                                                <option value="actress">Actress</option>
-                                                <option value="art-direction">Art direction</option>
-                                                <option value="assistant-director">Assistant director</option>
-                                                <option value="best-motion-picture">Best motion picture</option>
-                                                <option value="best-picture">Best picture</option>
-                                                <option value="cinematography">Cinematography</option>
-                                                <option value="costume-design">Costume design</option>
-                                                <option value="dance-direction">Dance direction</option>
-                                                <option value="directing">Directing</option>
-                                                <option value="documentary">Documentary</option>
-                                                <option value="engineering-effects">Engineering effects</option>
-                                                <option value="film-editing">Film editing</option>
-                                                <option value="foreign-film">Foreign film</option>
-                                                <option value="international-film">International film</option>
-                                                <option value="makeup">Makeup</option>
-                                                <option value="music">Music</option>
-                                                <option value="outstanding-motion-picture">Outstanding motion picture
-                                                </option>
-                                                <option value="outstanding-picture">Outstanding picture</option>
-                                                <option value="outstanding-production">Outstanding production</option>
-                                                <option value="short-film">Short film</option>
-                                                <option value="short-subject">Short subject</option>
-                                                <option value="sound">Sound</option>
-                                                <option value="sound-editing">Sound editing</option>
-                                                <option value="sound-recording">Sound recording</option>
-                                                <option value="special-effects">Special effects</option>
-                                                <option value="visual-effects">Visual effects</option>
-                                                <option value="writing">Writing</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-2">
-                                            <div class="row g-2 align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="btn-group" role="group"
-                                                        aria-label="Basic checkbox toggle button group">
-                                                        <input type="checkbox" class="btn-check" id="winner"
-                                                            autocomplete="off">
-                                                        <label class="btn btn-outline-success"
-                                                            for="winner">Winner</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <span id="winnerCheckboxInstr" class="form-text">
-                                                        Check to show only winner
-                                                    </span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <select class="form-select" aria-label="Search" type="search" id="category" name="c" onchange="getCategorySelect()">
+                                            <option selected disabled hidden>Category</option>
+                                            <option value="animated-feature">Animated feature</option>
+                                            <option value="actor">Actor</option>
+                                            <option value="actress">Actress</option>
+                                            <option value="art-direction">Art direction</option>
+                                            <option value="assistant-director">Assistant director</option>
+                                            <option value="best-motion-picture">Best motion picture</option>
+                                            <option value="best-picture">Best picture</option>
+                                            <option value="cinematography">Cinematography</option>
+                                            <option value="costume-design">Costume design</option>
+                                            <option value="dance-direction">Dance direction</option>
+                                            <option value="directing">Directing</option>
+                                            <option value="documentary">Documentary</option>
+                                            <option value="engineering-effects">Engineering effects</option>
+                                            <option value="film-editing">Film editing</option>
+                                            <option value="foreign-film">Foreign film</option>
+                                            <option value="international-film">International film</option>
+                                            <option value="makeup">Makeup</option>
+                                            <option value="music">Music</option>
+                                            <option value="outstanding-motion-picture">Outstanding motion picture</option>
+                                            <option value="outstanding-picture">Outstanding picture</option>
+                                            <option value="outstanding-production">Outstanding production</option>
+                                            <option value="short-film">Short film</option>
+                                            <option value="short-subject">Short subject</option>
+                                            <option value="sound">Sound</option>
+                                            <option value="sound-editing">Sound editing</option>
+                                            <option value="sound-recording">Sound recording</option>
+                                            <option value="special-effects">Special effects</option>
+                                            <option value="visual-effects">Visual effects</option>
+                                            <option value="writing">Writing</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-2">
+                                        <div class="row g-2 align-items-center">
+                                            <div class="col-auto">
+                                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                                    <input type="checkbox" class="btn-check" id="winner" autocomplete="off">
+                                                    <label class="btn btn-outline-success" for="winner">Winner</label>
                                                 </div>
                                             </div>
+                                            <div class="col-auto">
+                                                <span id="winnerCheckboxInstr" class="form-text">
+                                                    Check to show only winner
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="mb-2">
-                                            <button class="btn btn-outline-success" type="submit">Search</button>
-                                        </div>
-                                    </form>
+                                    </div>
+                                    <div class="mb-2">
+                                        <button class="btn btn-outline-success" type="submit">Search</button>
+                                    </div>
+                                </form>
                                 </table>
                             </div>
                         </div>
@@ -290,127 +227,8 @@
         </nav>
     </header>
     <div class="p-3 mb-2 bg-dark text-white">
-        <h1>REST API Document</h1>
-        <br>
-        <p>The REST API allows users to obtain information about the movies or categories for oscars Awards.</p>
-        <p>This pages list instructions for the use of the API.</p>
         <hr>
-        <h2>Find Nomination by ID</h2>
-        <p>An Oscars nomination can be located in the h2 database.</p>
-        <p>Find Nomination by ID would always return only one JSON object.</p>
-        <p>Input:</p>
-        <p><b>http://localhost:8080/awardmovies/id/[id]</b></p>
-        <p>[id]: Valid ID will be integer with a value between 1 and 10394.</p>
-        <p>Output/Return:</p>
-        <p>A single JSON object with this format:</p>
-        <p>Example: {"id":1,"title":"The
-            Noose","category":"ACTOR","yearReleased":1927,"yearNominated":1928,"awardee":"Richard
-            Barthelmess","awardStatus":false,"link":"https://www.themoviedb.org/movie/113167/watch","imageLink":"https://image.tmdb.org/t/p/w500/hheIsv2RAp8htWZspOPPEcEdlTL.jpg","plot":"In
-            this suspenseful silent crime drama, a hijacker proves his loyalty to his mother by killing his biological
-            father, a blackmailing gangster who has been threatening to destroy the mother's happy marriage to the
-            governor.","tmdbId":113167}</p>
-        <p>id:(data type: integer) Unique id for each nominated movie</p>
-        <p>title:(data type: string) Movie's title </p>
-        <p>category: (data type: string) The Oscars nomination category</p>
-        <p>yearReleased: (data type: integer) The release year of the movie</p>
-        <p>yearNominated: (data type: integer) The nominated year of the movie</p>
-        <p>awardee: (data type: string) The awardee of the nominated movie</p>
-        <p>awardStatus: (data type: boolean) Set to false if the nominated movie did not get the award. Set to true if
-            the ominated movie get the award.</p>
-        <p>link: (data type: string) Providing a link to an external site for the movie from an outside source TMDB.</p>
-        <p>imageLink: (data type: string) Providing a image link from the TMDB API of each movie</p>
-        <p>plot: (data type: string) A brief introduction of the movie, obtained from the TMDB API</p>
-        <p>tmdbId: (data type: integer) Unique id for the movie from the TMDB API. It is not the same as the id.</p>
-        <hr>
-        <h2>Find Nomination by year</h2>
-        <p>Find all the nomination by year no matter of the categories for rewards.</p>
-        <p>The set of data contain about 100+ data, therefore, request may take a longer response time</p>
-        <p></p>
-        <p>Input:</p>
-        <p><b>http://localhost:8080/awardmovies/year/[year]</b></p>
-        <p>[year]: Valid year will be integer with a value between 1928 and 2020.</p>
-        <p>Output/Return:</p>
-        <p>A set of JSON objects of nominated movies within input year.</p>
-        <p>The format of a JSON object follow the format of nomination by ID</p>
-        <hr>
-        <h2>Find Nomination by Categories for rewards</h2>
-        <p>Find Nomination by Categories will result a large set of data, and it will result a longer response time</p>
-        <p>So, it is limited to use with year.</p>
-        <p><b>http://localhost:8080/awardmovies/[categories]/[year]</b></p>
-        <p>[year]: Valid year will be integer with a value between 1928 and 2020.</p>
-        <p>[categories]:</p>
-        <ul>
-            <li>animated-feature</li>
-            <li>actor</li>
-            <li>actress</li>
-            <li>art-direction</li>
-            <li>costume-design</li>
-            <li>dance-direction</li>
-            <li>cinematography</li>
-            <li>writing</li>
-            <li>directing</li>
-            <li>engineering-effects</li>
-            <li>film-editing</li>
-            <li>music</li>
-        </ul>
-        <p>Output/Return:</p>
-        <p>A set of JSON objects of nominated movies within input categories and year.</p>
-        <p>The format of a JSON object follow the format of nomination by ID</p>
-        <hr>
-        <h2>Search</h2>
-        <p>Capitalization doesn't matter</p>
-        <p>Input:</p>
-        <p><b>http://localhost:8080/awardmovies/search-movie?Title=[movie name]</b></p>
-        <p>[movie name]: Movie name could be genral or specific</p>
-        <p> The more genral input, the longer response time, and it might included more objects</p>
-        <p>For example: Input "the last command" will return only one JSON object</p>
-        <p> Input "last" will return about 50 JSON object with longer response time.</p>
-        <hr>
-        <h2>Find Winner By Category</h2>
-        <p>Finds the winners of a given category with respect to that year.</p>
-        <p></p>
-        <p>Input:</p>
-        <p><b>http://localhost:8080/awardmovies/winning/[categories]/[year]</b></p>
-        <p>[year]: A Valid year will be integer with a value between 1928 and 2020.</p>
-        <p>[categories]: valid categories include</p>
-        <ul>
-            <li>animated-feature</li>
-            <li>actor</li>
-            <li>actress</li>
-            <li>art-direction</li>
-            <li>costume-design</li>
-            <li>dance-direction</li>
-            <li>cinematography</li>
-            <li>writing</li>
-            <li>directing</li>
-            <li>engineering-effects</li>
-            <li>film-editing</li>
-            <li>music</li>
-        </ul>
-        <p>Output/Return:</p>
-        <p>A singleton resource in JSON that displays the winner of that given category and year.</p>
-        <p>The format of a JSON object follow the format of nomination by ID</p>
-        <hr>
-        <h2>Best Film Editing</h2>
-        <p>Finds the JSON objects related to Best Film Editing category.</p>
-        <p></p>
-        <p>Input:</p>
-        <p><b>1. http://localhost:8080/awardmovies/category/film-editing</b></p>
-        <p><b>2. http://localhost:8080/awardmovies/category/film-editing/year/[year]</b></p>
-        <p><b>3. http://localhost:8080/awardmovies/winning/category/film-editing/year/[year]</b></p>
-        <p><b>4. http://localhost:8080/awardmovies/category/film-editing/start/[from year]/end/[to year]</b></p>
-        <p>[year]: A Valid year will be integer with a value between 1928 and 2020.</p>
-        <p>[from year]: A Valid year will be integer with a value between 1928 and 2019 and less than [to year].</p>
-        <p>[to year]: A Valid year will be integer with a value between 1929 and 2020 and greater than [from year].</p>
-        <p>Output:</p>
-        <p>The first url return the list of movies which nominated for file-editing award from 1980-2020.</p>
-        <p>The second url return the list of movies which nominated for file-editing award from user's input year</p>
-        <p>The third url return one movie which is the winner of file-editing award from user's input year</p>
-        <p>The fourth url return the list of movies which nominated for file-editing award from user's input year within
-            a range</p>
-        <br><br>
-        <hr>
-        <h1>Overview of REST Endpoints</h1>
+        <h1>Overview of REST Endpoints HTML Document</h1>
         <hr>
         <p>By Krishna S and Jeffrey T</p>
         <br>
@@ -423,58 +241,61 @@
         <br>
         <p>Below is a list of endpoints to replace [path] with:</p>
         <ul>
-            <li>/index *</li>
-            <li>/apiDoc *</li>
-            <li>/year/{year} </li>
-            <li>/id/{id} </li>
-            <li>/singleton/winning/category/{category}/year/{year} </li>
-            <li>/category/{category} </li>
-            <li>/api/category/{category}/year/{year} </li>
-            <li>/category/{category}/year/{year} *</li>
-            <li>/api/range/start/{start}/end/{end} </li>
-            <li>/range/start/{start}/end/{end} *</li>
-            <li>/api/category/{category}/start/{start}/end/{end} *</li>
-            <li>/api//winning/category/{category} </li>
-            <li>/winning/category/{category} *</li>
-            <li>/api/winning/category/{category}/year/{year} </li>
-            <li>/winning/category/{category}/year/{year} *</li>
-            <li>/api/search/category-year?category=___&year=___ </li>
-            <li>/search/category-year?category=___&year=___ *</li>
-            <li>/api/search-movie?Title=___ </li>
-            <li>/search-movie?Title=___ </li>
+            <li><b>/index</b> *</li>
+            <li><b>/apiDoc</b> *</li>
+            <li><b>/year/{year}</b> </li>
+            <li><b>/id/{id}</b> </li>
+            <li><b>/singleton/winning/category/{category}/year/{year}</b> </li>
+            <li><b>/category/{category}</b> *</li>
+            <li><b>/api/category/{category}/year/{year}</b> </li>
+            <li><b>/category/{category}/year/{year}</b> *</li>
+            <li><b>/api/range/start/{start}/end/{end}</b> </li>
+            <li><b>/range/start/{start}/end/{end}</b> *</li>
+            <li><b>/api/category/{category}/start/{start}/end/{end}</b> *</li>
+            <li><b>/api//winning/category/{category}</b> </li>
+            <li><b>/winning/category/{category}</b> *</li>
+            <li><b>/api/winning/category/{category}/year/{year}</b> </li>
+            <li><b>/winning/category/{category}/year/{year}</b> *</li>
+            <li><b>/api/search/category-year?category=___&year=___</b> </li>
+            <li><b>/search/category-year?category=___&year=___</b> *</li>
+            <li><b>/api/search-movie?Title=___</b> </li>
+            <li><b>/search-movie?Title=___</b> *</li>
         </ul>
         <p>* A website page will be displayed with the content (search results, information, etc).</p>
         <p> If you add api/ after awardmovies/, you will only receive the JSON data.</p>
         <br>
-        <p>NOTE: For any paths with curly braces { }, replace the entire portion surrounded by { } (including the curly
-            braces) with an input value.</p>
+        <p><b>NOTE:</b> For any paths with curly braces { }, replace the entire portion surrounded by { } (including the curly braces) with an input value.</p>
+        <br>
         <hr>
         <h2>REST Endpoints Usage and Recommendations</h2>
+        <hr>
         <br>
-        <p>/index</p>
-        <p>This will return the main page. On the screen, there will be a list of 10 recently nominated films from 2020.
-        </p>
-        <br>
-        <p>/apiDoc</p>
+        <p><b>/index</b></p>
+        <p>This will return the main page. On the screen, there will be a list of 10 recently nominated films from 2020.</p>
+        <p>Below is an example of what may be displayed.</p>
+        <img th:src="@{/img/index.png}" alt="" height="500px"/>
+        <br><br>
+        <hr>
+        <p><b>/apiDoc</b></p>
         <p>This will return the HTML page containing information on all the API REST Endpoints for this application.</p>
-        <br>
-        <p>/year/{year}</p>
-        <p>This will return the JSON data for all the movies nominated for that particular {year}. Input a nomination
-            year between 1980 to 2020.</p>
-        <p>Find all the nominations by year no matter the categories for rewards. The set of data may contain about 100+
-            data, therefore, requests may take a longer response time.</p>
+        <p>Below is an example of what may be displayed.</p>
+        <img th:src="@{/img/apiDoc.png}" alt="" height="500px"/>
+        <br><br>
+        <hr>
+        <p><b>/year/{year}</b></p>
+        <p>This will return the JSON data for all the movies nominated for that particular {year}. Input a nomination year between 1980 to 2020.</p>
+        <p>Find all the nominations by year no matter the categories for rewards. The set of data may contain about 100+ data, therefore, requests may take a longer response time.</p>
         <p>Input:</p>
-        <p><b>http://localhost:8080/awardmovies/year/[year]</b></p>
-        <p>[year]: Valid year will be an integer with a value between 1980 and 2020.</p>
+        <p><b>localhost:8080/awardmovies/year/{year}</b></p>
+        <p>{year}: Valid year will be an integer with a value between 1980 and 2020.</p>
         <p>Output/Return:</p>
-        <p>A set of JSON objects of nominated movies within the input year.</p>
+        <p>A set of nominated movies within the input year in the GUI.</p>
         <br>
-        <p>/id/{id}</p>
-        <p>This will return a singleton JSON data for a movie with that ID in the database. An Oscars nomination can be
-            located in the h2 database.</p>
+        <p><b>/id/{id}</b></p>
+        <p>This will return a singleton JSON data for a movie with that ID in the database. An Oscars nomination can be located in the h2 database.</p>
         <p>Input:</p>
-        <p><b>http://localhost:8080/awardmovies/id/[id]</b></p>
-        <p>[id]: Valid ID will be an integer with a value between 1 and 4667.</p>
+        <p><b>http://localhost:8080/awardmovies/id/{id}</b></p>
+        <p>{id}: Valid ID will be an integer with a value between 1 and 4667.</p>
         <p>Output/Return:</p>
         <p>A single JSON object with this format:</p>
         <p>Example: {"id":1,"title":"The
@@ -502,32 +323,32 @@
             time. Below are valid award categories to input for {category}.</p>
         <p>You may replace the “-” with “_” or “ “. Capitalization does not matter.</p>
         <ul>
-            <li>actor-in-a-leading-role [ ]</li>
-            <li>actor-in-a-supporting-role [ ]</li>
-            <li>actress-in-a-leading-role [ ]</li>
-            <li>actress-in-a-supporting-role [ ]</li>
-            <li>animated-feature-film [ ]</li>
-            <li>art-direction [ ]</li>
-            <li>assistant-director [ ]</li>
-            <li>best-motion-picture [ ]</li>
-            <li>best-picture [ ]</li>
-            <li>cinematography [ ]</li>
-            <li>costume-design [ ]</li>
-            <li>dance-direction [ ]</li>
-            <li>engineering-effects [ ]</li>
-            <li>film-editing [ ]</li>
-            <li>foreign-language-film [ ]</li>
-            <li>international-feature-film [ ]</li>
-            <li>makeup [ ]</li>
-            <li>outstanding-motion-picture [ ]</li>
-            <li>outstanding-picture[ ]</li>
-            <li>outstanding-production [ ]</li>
-            <li>sound-editing [ ]</li>
-            <li>sound-effects-editing [ ]</li>
-            <li>sound-mixing [ ]</li>
-            <li>sound-recording [ ]</li>
-            <li>special-effects [ ]</li>
-            <li>visual-effects [ ]</li>
+            <li>actor-in-a-leading-role *</li>
+            <li>actor-in-a-supporting-role *</li>
+            <li>actress-in-a-leading-role *</li>
+            <li>actress-in-a-supporting-role *</li>
+            <li>animated-feature-film *</li>
+            <li>art-direction *</li>
+            <li>assistant-director *</li>
+            <li>best-motion-picture *</li>
+            <li>best-picture *</li>
+            <li>cinematography *</li>
+            <li>costume-design *</li>
+            <li>dance-direction *</li>
+            <li>engineering-effects *</li>
+            <li>film-editing *</li>
+            <li>foreign-language-film *</li>
+            <li>international-feature-film *</li>
+            <li>makeup *</li>
+            <li>outstanding-motion-picture *</li>
+            <li>outstanding-picture*</li>
+            <li>outstanding-production *</li>
+            <li>sound-editing *</li>
+            <li>sound-effects-editing *</li>
+            <li>sound-mixing *</li>
+            <li>sound-recording *</li>
+            <li>special-effects *</li>
+            <li>visual-effects *</li>
             <li>writing</li>
             <li>actor</li>
             <li>actress</li>
@@ -540,82 +361,112 @@
             <li>sound</li>
             <li>special-award</li>
         </ul>
-        <p>[ ] → will return singleton data if trying to find the winner for that particular category for a single year
-        </p>
-        <p>Output/Return:</p>
-        <p>A set of JSON objects of nominated movies within input categories.</p>
-        <p>The format of a JSON object follows the format of /id/{id}</p>
+        <p>* will return singleton data if trying to find the winner for that particular category for a single year</p>
+        <hr>
+        <p><b>/category/{category}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type (category) in the GUI.</p>
+        <p>Example URL: </p>
+        <p>localhost:8080/awardmovies/category/actor</p>
+        <hr>
+        <p><b>/winning/category/{category}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for the winner and that particular award type (category) in the GUI.</p>
+        <p>Example URL: </p>
+        <p>localhost:8080/awardmovies/winning/category/actor</p>
+        <hr>
+        <p><b>/category/{category}/year/{year}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type (category) and (year) in the GUI.</p>
+        <p>{year}: Valid year will be integer with a value between 1980 and 2020.</p>
+        <p>localhost:8080/awardmovies/category/actor/year/2020</p>
+        <hr>
+        <p><b>/winning/category/{category}/year/{year}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for the winner and that particular award type (category) and year in the GUI.</p>
+        <p>Example URL: </p>
+        <p>localhost:8080/awardmovies/winning/category/actor/year/2020</p>
+        <hr>
+        <p><b>/range/start/{start}/end/{end}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated from year {start} to year {end} in the GUI.</p>
+        <p>Example URL:</p>
+        <p>localhost:8080/awardmovies/range/start/2009/end/2011</p>
+        <p><i>WARNING:</i> It is highly recommended to limit the search to at max 3-4 years in order for fast loading time.</p>
+        <hr>
+        <p><b>/category/{category}/start/{start}/end/{end}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type (category) from year {start} to year {end} in the GUI.</p>
+        <p>Example URL:</p>
+        <p>localhost:8080/awardmovies/category/film-editing/start/2009/end/2011</p>
+        <p><i>WARNING:</i> It is highly recommended to limit the search to at max 3-4 years in order for fast loading time.</p>
+        <hr>
+        <h2>Search</h2>
+        <br>
+        <p><b>/search-movie?Title=___</b></p>
+        <p>This is a parameterized search that will return a collection of JSON data for movies with the inputted words in the title in the GUI. Capitalization does not matter.</p>
+        <p>Example URL: </p>
+        <p>localhost:8080/awardmovies/search-movie?Title=star%20wars</p>
+        <p> [Note]: Movie names could be general or specific. The more general input, the longer the response time, and it might include more objects.</p>
+        <p>For example, Input "Parasite" will return only 6 JSON objects Input "Par" will return all the movie titles included the words “par”, which is about 50 JSON objects with a longer response time.</p>
+        <hr>
+        <p><b>/search/category-year?category=___&year=___</b></p> 
+        <p>This is a parameterized search that will return a collection of JSON data for movies nominated for an award type (category) on a particular year in the GUI.</p>
+        <p>Example URL: </p>
+        <p>http://localhost:8080/awardmovies/search/category-year?category=documentary&year=2001</p>
         <hr>
         <h2>Invalid Inputs</h2>
         <p>An Illegal Argument Exception error will page will display if the user inputs:</p>
         <ul>
             <li>A nomination year not between (inclusive) 1980 to 2020</li>
-            <li>A title that is less than 3 characters long <i>[NOTE]: empty space will return an empty result</i></li>
-            <li>A category that is less than 5 characters long <i>[NOTE]: empty space will return an empty result</i>
+            <li>A title that is less than 3 characters long 
+                <ul>[NOTE]: empty space will return an empty result</ul>
+            </li>
+            <li>A category that is less than 5 characters long 
+                <ul>[NOTE]: empty space will return an empty result</ul>
             </li>
         </ul>
         <hr>
-        <p>/singleton/winning/category/{category}/year/{year}</p>
+        <h1>API Usage and Recommendations</h1>
+        <br><br>
+        <p><b>/singleton/winning/category/{category}/year/{year}</b></p>
         <p>This will return a singleton JSON data for movies nominated for a certain award (category) for that year.</p>
-        <p>The highlighted categories above are the only award types (category) that will return JSON data.</p>
+        <p>The * categories above are the only award types (category) that will return JSON data.</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/singleton/winning/category/animated-featured-film/year/2019</p>
         <hr>
-        <p>/category/{category}</p>
-        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type
-            (category).</p>
-        <p>Example URL: </p>
-        <p>localhost:8080/awardmovies/category/actor</p>
-        <hr>
-        <p>/api/category/{category}/year/{year}</p>
-        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type
-            (category) on that year ({year}).</p>
+        <p><b>/api/category/{category}/year/{year}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type (category) on that year ({year}).</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/api/category/actor/year/2008</p>
         <hr>
-        <p>/api/range/start/{start}/end/{end}</p>
-        <p>This will retrieve a collection of JSON data for all the movies nominated from year {start} to year {end}.
-        </p>
+        <p><b>/api/range/start/{start}/end/{end}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated from year {start} to year {end}.</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/api/range/start/2009/end/2011</p>
-        <p><i>WARNING: It is highly recommended to limit the search to at max 3-4 years in order for fast loading
-                time.</i></p>
+        <p><i>WARNING:</i> It is highly recommended to limit the search to at max 3-4 years in order for fast loading time.</p>
         <hr>
-        <p>/api/category/{category}/start/{start}/end/{end}</p>
-        <p>This will retrieve a collection of JSON data for all the movies nominated for award type {category} from year
-            {start} to year {end}.</p>
+        <p><b>/api/category/{category}/start/{start}/end/{end}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for award type {category} from year {start} to year {end}.</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/api/category/film-editing/start/2009/end/2011</p>
-        <p><i>WARNING: It is highly recommended to limit the search to at max 3-4 years in order for fast loading
-                time.</i></p>
+        <p><i>WARNING:</i> It is highly recommended to limit the search to at max 3-4 years in order for fast loading time.</p>
         <hr>
-        <p>/api/winning/category/{category}</p>
+        <p><b>/api/winning/category/{category}</b></p>
         <p>This will retrieve a collection of JSON data for all the movies that won the award type {category}.</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/api/range/start/2009/end/2011</p>
         <hr>
-        <p>/api/winning/category/{category}/year/{year}</p>
-        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type
-            {category} for the year {year}.</p>
+        <p><b>/api/winning/category/{category}/year/{year}</b></p>
+        <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type {category} for the year {year}.</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/api/winning/actress/year/1999</p>
         <hr>
-        <p>/api/search/category-year?category=___&year=___</p>
-        <p>This is a parameterized search that will return a collection of JSON data for movies nominated for an award
-            type (category) on a particular year.</p>
+        <p><b>/api/search/category-year?category=___&year=___</b></p>
+        <p>This is a parameterized search that will return a collection of JSON data for movies nominated for an award type (category) on a particular year.</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/api/search/category-year?category=documentary&year=2001</p>
         <hr>
-        <p>/api/search-movie?Title=___</p>
-        <p>This is a parameterized search that will return a collection of JSON data for movies with the inputted words
-            in the title. Capitalization does not matter.</p>
+        <p><b>/api/search-movie?Title=___</b></p>
+        <p>This is a parameterized search that will return a collection of JSON data for movies with the inputted words in the title. Capitalization does not matter.</p>
         <p>Example URL: </p>
         <p>localhost:8080/awardmovies/api/search-movie?Title=star-wars</p>
-        <p>Movie names could be general or specific. The more general input, the longer the response time, and it might
-            include more objects.</p>
-        <p>For example, Input "Parasite" will return only six JSON objects Input "Par" will return all the movie titles
-            included the words “par”,</p>
-        <p>which is about 50 JSON objects with a longer response time.</p>
+        <p> [Note]: Movie names could be general or specific. The more general input, the longer the response time, and it might include more objects.</p>
+        <p>For example, Input "Parasite" will return only 6 JSON objects Input "Par" will return all the movie titles included the words “par”, which is about 50 JSON objects with a longer response time.</p>
         <hr>
         <h2>Examples</h2>
         <p>Below are some examples and explanations when using the REST API.</p>
@@ -623,12 +474,11 @@
         <h2>Best Animated Feature Film</h2>
         <p>Finds the JSON objects related to the Best Animated Feature Film category.</p>
         <p>Input:</p>
-        <p>1. /category/animated-feature-film</p>
-        <p>2. /category/animated-feature-film/year/{year}</p>
-        <p>3. /winning/category/animated-feature-film/year/{year}</p>
-        <p>4. /category/animated-feature-film/start/{from year}/end/{to year}</p>
+        <p>1. <b>/category/animated-feature-film</b></p>
+        <p>2. <b>/category/animated-feature-film/year/{year}</b></p>
+        <p>3. <b>/winning/category/animated-feature-film/year/{year}</b></p>
+        <p>4. <b>/category/animated-feature-film/start/{from year}/end/{to year}</b></p>
         <p>{year}: A Valid year will be integer with a value between 1980 and 2020.</p>
-        <br>
         <p>{from year}: A Valid year will be integer with a value between 1980 and 2019 and less than {to year}.</p>
         <p>{to year}: A Valid year will be integer with a value between 1981 and 2020 and greater than {from year}.</p>
         <p>Output:</p>
@@ -641,35 +491,40 @@
         <p>The fourth URL returns the list of movies that were nominated for animated-feature-film awards from user's
             input year within a range</p>
         <br>
-        <p>Users can easily find the best-animated feature film by using the advanced search function provided in the
-            GUI.</p>
+        <p>Below is the example of <b>/winning/category/animated-feature-film/year/2020</b> return in the GUI</p>
+        <p>Users can easily find the best-animated feature film by using the advanced search function provided in the GUI.</p>
+        <img th:src="@{/img/bestAnimatedFeatureEx.png}" alt="" height="500px"/>
         <hr>
         <h2>Best Film Editing</h2>
         <p>Finds the JSON objects related to the Best Film Editing category.</p>
         <p>Input:</p>
-        <p>1. /category/film-editing</p>
-        <p>2. /category/film-editing/year/{year}</p>
-        <p>3. /winning/category/film-editing/year/{year}</p>
-        <p>4. /category/film-editing/start/{from year}/end/{to year}</p>
+        <p>1. <b>/category/film-editing</b></p>
+        <p>2. <b>/category/film-editing/year/{year}</b></p>
+        <p>3. <b>/winning/category/film-editing/year/{year}</b></p>
+        <p>4. <b>/category/film-editing/start/{from year}/end/{to year}</b></p>
         <br>
         <p>{year}: A Valid year will be integer with a value between 1980 and 2020.</p>
         <p>{from year}: A Valid year will be integer with a value between 1980 and 2019 and less than {to year}.</p>
         <p>{to year}: A Valid year will be integer with a value between 1981 and 2020 and greater than {from year}.</p>
         <p>Output:</p>
         <p>The first URL returns the list of movies that were nominated for file-editing awards from 1980-2020.</p>
-        <p>The second URL returns the list of movies that were nominated for file-editing awards from the user's input
-            year</p>
+        <p>The second URL returns the list of movies that were nominated for file-editing awards from the user's input year</p>
         <p>The third URL returns one movie which was the winner of the file-editing award from the user's input year</p>
-        <p>The fourth URL returns the list of movies that were nominated for file-editing awards from the user's input
-            year within a range</p>
-        <p>Users can easily find the best film editing film by using the advanced search function provided in the GUI.
-        </p>
+        <p>The fourth URL returns the list of movies that were nominated for file-editing awards from the user's input year within a range</p>
+        <p>Below is the example of <b>/winner/category/film-editing/year/2019</b> return in the GUI.</p>
+        <p>Users can easily find the best film editing film by using the advanced search function provided in the GUI.</p>
+        <img th:src="@{/img/bestFilmEditingEx.png}" alt="" height="500px"/>
+        <hr>
+        <p style="font-size:11px">If it works, it works. ¯\_(ツ)_/¯</p>
     </div>
+    <p>Credits:</p>
+    <img th:src="@{https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg}" id="tmdbLogo"/>
+    <img th:src="@{/img/SCRUM_LORDS-logos_transparent_resize.png}" id="slLogo" alt=""/>
+    <p>This product uses the TMDB API but is not endorsed or certified by TMDB.<a class="text-dark text-sm-right"> All the pain and suffering done by 2 developers out of a team of 5</a></p>
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script type="text/javascript" th:src="@{/js/cssandjs/actions.js}"></script>
 </body>
-
 </html>
