@@ -103,50 +103,12 @@ public class MovieService extends InputValidation {
     	temp.add(repo.findById(id));
     	return updateSearchedResults(temp).get(0);
     }
-    public boolean deleteMovieByIdFromDatabase(int id) {
-    	if(id < 1 || (repo.findById(id) == null))
-    		return false;
-    	else {
-    		repo.deleteById(id);
-    		return true;
-    	}
-    }
-    /*
-    public boolean addMovieToDatabase(Movie mov) {
-    	if(mov.getId() < 1 || (repo.findById(mov.getId())) != null)
-    		return false;
-    	else {
-    		repo.save(mov);
-    		return true;
-    	}
-    }
-  //haven't tested this yet
-    public boolean updateMovieInDatabase(int id, Movie mov) {
-    	Movie temp = repo.findById(id);
-    	if(id < 1 || temp == null)
-    		return false;
-    	else {
-    		temp.setAwardee(mov.getAwardee());
-    		temp.setAwardStatus(mov.isAwardStatus());
-    		temp.setCategory(mov.getCategory());
-    		temp.setImageLink(mov.getImageLink());
-    		temp.setLink(mov.getLink());
-    		temp.setPlot(mov.getPlot());
-    		temp.setTitle(mov.getTitle());
-    		temp.setTmdbId(mov.getTmdbId());
-    		temp.setYearNominated(mov.getYearNominated());
-    		temp.setYearReleased(mov.getYearReleased());
-    		repo.save(temp);
-    		return true;
-    	}
-    }
-    */
     //below are methods to search for movies based on year nominated, category, award status, etc
     public List<Movie> findByYear(String yearInput) {
     	int year = yearNominatedValidation(yearInput);
     	return updateSearchedResults(repo.findByYear(year));
     }
-    public List<Movie> findWinnersByCategory(String category, String yearInput) {
+    public List<Movie> findWinnersByCategoryAndYear(String category, String yearInput) {
     	category = categoryLengthValidation(category);
     	int year = yearNominatedValidation(yearInput);
     	return updateSearchedResults(repo.findWinnerByYear(category, year));

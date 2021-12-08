@@ -20,7 +20,6 @@ public interface MovieRepo extends CrudRepository<Movie,Integer> {
 	@Query("FROM Movie WHERE category LIKE %?1% AND title LIKE %?2% AND yearNominated=?3")
 	List<Movie> findNominationsByTitleAndYear(String award, String title, int year);
 	Movie findById(int id);
-	void deleteById(int id);
 	List<Movie> findByTitleContainingIgnoreCase(String title);
 	List<Movie> findByCategoryContainingIgnoreCase(String category);
 	List<Movie> findByYearNominatedBetween(int start, int end);
