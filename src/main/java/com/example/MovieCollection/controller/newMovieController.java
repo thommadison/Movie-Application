@@ -1,3 +1,8 @@
+/*NOTE: All the searches based on year will search based on the year the movie
+ *		was nominated. Hence, most movies will be released before the inputed
+ *		year.
+ */
+
 package com.example.MovieCollection.controller;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -77,7 +82,7 @@ public class newMovieController {
 			category = category.replaceAll("[-_]"," ").toUpperCase();
 			for(int i = 0; i < SINGLETON_CATEGORIES.length; i++) {
 				if(category.equals(SINGLETON_CATEGORIES[i])) {
-					List<Movie> temp = topicService.findWinnersByCategory(category, year);
+					List<Movie> temp = topicService.findWinnersByCategoryAndYear(category, year);
 					if(temp!=null)
 						return temp.get(0);
 				}
@@ -129,11 +134,11 @@ public class newMovieController {
 	}
 	@RequestMapping("/api/winning/category/{category}/year/{year}")
 	public List<Movie> getWinnersByCategoryAndYear(@PathVariable String category, @PathVariable String year) {
-		return topicService.findWinnersByCategory(category, year);
+		return topicService.findWinnersByCategoryAndYear(category, year);
 	}
 	@RequestMapping("/winning/category/{category}/year/{year}")
 	public ModelAndView getWinnersByCategoryAndYearWeb(@PathVariable String category, @PathVariable String year, Model model) {
-		List<Movie> movies = topicService.findWinnersByCategory(category, year);
+		List<Movie> movies = topicService.findWinnersByCategoryAndYear(category, year);
 		return modelMaker(movies, model);
 	}
 	@GetMapping("/api/search/category-year")
