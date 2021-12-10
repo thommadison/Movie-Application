@@ -145,3 +145,48 @@ function searchCheck(searchFlag) {
 // Event Listener
 SEARCHFORM.addEventListener('submit', submitted);
 ADVANCEDSEARCHFORM.addEventListener('submit', submitted1);
+
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+
+// When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+      document.getElementById("navbar").style.padding = "10px 10px";
+      document.getElementById("logo").style.fontSize = "25px";
+      document.getElementById("logoImg").style.width = "50px";
+  } else {
+      document.getElementById("navbar").style.padding = "20px 10px";
+      document.getElementById("logo").style.fontSize = "35px";
+      document.getElementById("logoImg").style.width = "80px";
+  }
+}
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+var images = document.getElementsByClassName('myImages');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+// Go through all of the images with our custom class
+for (var i = 0; i < images.length; i++) {
+    var img = images[i];
+    // and attach our click listener for this image.
+    img.onclick = function(evt) {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+  }
+  
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
