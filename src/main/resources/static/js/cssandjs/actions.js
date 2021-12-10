@@ -192,3 +192,14 @@ span.onclick = function() {
   modal.style.display = "none";
   document.getElementById("navbar").style.display = "block";
 }
+
+var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 1500);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
