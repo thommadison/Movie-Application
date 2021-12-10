@@ -50,6 +50,19 @@ h2{
   animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
 }
 
+h1{
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  text-align: center;
+  /* margin-top: 150px; */
+  font-size: 32px;
+  color: white;
+  font-weight: 300;
+  font-family: Audiowide;
+  text-shadow: 0px 0px 4px #12000a;
+}
+
 a{
 	position: absolute;
 	top: 50%;
@@ -64,6 +77,7 @@ a{
 	font-family: Audiowide;
 	text-shadow: 0px 0px 4px #12000a;
 	animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
+  -webkit-text-stroke: 1px black;
   }
 
 #svgWrap_1,
@@ -199,4 +213,36 @@ div{
   100%  {
     filter: hue-rotate(0deg);
   }
+}
+
+.container
+{
+	opacity: 1.0;
+	min-height: 100vh;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.error-box
+{
+	height: 50vh;
+	width: 50vh;
+	background-color:  #d68910;
+	display:flex;
+	align-items: center;
+	text-align: center;
+	padding: 5vh;
+	position: relative;
+}
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.error-actions {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.error-actions .btn { 
+    margin-right:10px; 
 }
