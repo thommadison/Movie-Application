@@ -9,8 +9,9 @@
     <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
     <title>Oscar Movies</title> 
 </head>
-<body class="p-3 mb-2 bg-dark text-white">
-    <div class="p-3 mb-2 bg-dark text-white">
+<body class="p-3 mb-2 bg-dark text-white" onload="myFunction()" style="margin:0;">
+    <div id="loader"></div>
+    <div class="p-3 mb-2 bg-dark text-white" id="myDiv">
     <header>
         <!-- navigation bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
@@ -261,21 +262,18 @@
     </table>
     <!-- The Modal -->
     <div id="myModal" class="modal">
-
-    <!-- The Close Button -->
-    <span class="close">&times;</span>
-  
-    <!-- Modal Content (The Image) -->
-    <img class="modal-content" id="img01">
-  
-    <!-- Modal Caption (Image Text) -->
-    <div id="caption"></div>
-  </div>
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
     </div>
     <p>Credits:</p>
     <img th:src="@{https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg}" id="tmdbLogo"/>
     <img th:src="@{/img/SCRUM_LORDS-logos_transparent_resize.png}" id="slLogo" alt=""/>
     <p>This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+    </div>
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript" th:src="@{/js/cssandjs/actions.js}"></script>
