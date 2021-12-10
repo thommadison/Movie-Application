@@ -176,9 +176,10 @@ for (var i = 0; i < images.length; i++) {
     var img = images[i];
     // and attach our click listener for this image.
     img.onclick = function(evt) {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      captionText.innerHTML = this.alt;
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        document.getElementById("navbar").style.display = "none";
+        captionText.innerHTML = this.alt;
     }
   }
   
@@ -189,4 +190,5 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  document.getElementById("navbar").style.display = "block";
 }
