@@ -13,13 +13,16 @@
     <div class="p-3 mb-2 bg-dark text-white">
     <header>
         <!-- navigation bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
             <div class="container-fluid">
-                <img th:src="@{https://seeklogo.com/images/O/oscar-logo-AECAAC69D7-seeklogo.com.png}" width="80px"/>
-                <a class="navbar-brand" href="/awardmovies/index" style="color: rgb(185, 165, 50);">Oscars Nomination</a>
+                <div>
+                <img id="logoImg" th:src="@{https://seeklogo.com/images/O/oscar-logo-AECAAC69D7-seeklogo.com.png}" width="80px"/>
+                <a id="logo" class="navbar-brand" href="/awardmovies/index" style="color: rgb(185, 165, 50);">Oscars Nomination</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                </div>
+                <div id= "navbar-right">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -147,9 +150,9 @@
                                         </div>
                                     </div>
                                     <div class="mb-2">
-                                        <a class="btn btn-outline-success" data-bs-toggle="collapse" id="range" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <button  class="btn btn-outline-success" data-bs-toggle="collapse" id="range" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                             Use range
-                                        </a>
+                                        </button>
                                         <div class="collapse" id="collapseExample">
                                             <div class="card card-body">
                                                 <div class="row g-2 align-items-center">
@@ -221,10 +224,12 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
         </nav>
     </header>
-    <p>
+    <span class="brlarge"></span>
+    <div id="google_translate_element"></div>
     <!-- movies table -->
     <table class="table table-dark table-hover">
         <thead>
@@ -262,5 +267,25 @@
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript" th:src="@{/js/cssandjs/actions.js}"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+          // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            document.getElementById("navbar").style.padding = "10px 10px";
+            document.getElementById("logo").style.fontSize = "25px";
+            document.getElementById("logoImg").style.width = "50px";
+        } else {
+            document.getElementById("navbar").style.padding = "20px 10px";
+            document.getElementById("logo").style.fontSize = "35px";
+            document.getElementById("logoImg").style.width = "80px";
+        }
+        }
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
