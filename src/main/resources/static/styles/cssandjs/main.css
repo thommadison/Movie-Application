@@ -95,38 +95,6 @@ html {
     font-size: 15px;
 }
 
-.error-container
-{
-	opacity: 1.0;
-	min-height: 100vh;
-	display:flex;
-	align-items: center;
-	justify-content: center;
-}
-.error-box
-{
-	height: 50vh;
-	width: 50vh;
-	background-color:  #d68910;
-	display:flex;
-	align-items: center;
-	text-align: center;
-	padding: 5vh;
-	position: relative;
-}
-.error-template {
-    padding: 40px 15px;
-    text-align: center;
-}
-
-.error-actions {
-    margin-top:15px;
-    margin-bottom:15px;
-}
-.error-actions .btn { 
-    margin-right:10px; 
-}
-
 #query
 {
     max-width: auto;
