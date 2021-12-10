@@ -14,23 +14,9 @@
 <link th:href="@{/styles/cssandjs/error.css}" rel="stylesheet" />
 <title>Illegal Argument</title>
 </head>
-<body class="center-container">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="error-template">
-					<h1>Oops!</h1>
-					<h2>Input Error</h2>
-					<div class="error-details" th:text="${error}"></div>
-					<p></p>
-					<div class="error-actions">
-						<a href="http://localhost:8080/awardmovies/index"
-							class="btn btn-primary btn-lg"><span
-							class="glyphicon glyphicon-home"></span> Take Me Home </a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<body>
+	<div></div>
+	<h1><p th:text="${error}"></p></h1>
+	<h3><a href="http://localhost:8080/awardmovies/index" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Take Me Home </a></h3>
 </body>
 </html>
