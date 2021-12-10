@@ -56,7 +56,7 @@ function submitted(event) {
     }
 
     function openTab() {
-        return window.open(searchTitleUrl, '_blank').focus();
+        return window.open(searchTitleUrl, "_self").focus();
     }
 }
 
@@ -92,7 +92,7 @@ function submitted1(event) {
     }
 
     function openTab(searchUrl) {
-        return window.open(searchUrl, '_blank').focus();
+        return window.open(searchUrl, "_self").focus();
     }
 }
 
