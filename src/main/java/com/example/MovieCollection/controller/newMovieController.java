@@ -87,7 +87,7 @@ public class newMovieController {
 						return temp.get(0);
 				}
 			}
-			return new Movie();
+			return null;
 	}
 	@RequestMapping("/category/{category}")
 	public ModelAndView getCategory(@PathVariable String category, Model model){
@@ -160,23 +160,6 @@ public class newMovieController {
     	List<Movie> movies = topicService.findByTitle(title);
     	return modelMaker(movies, model);
     }
-    /*
-    // add movie
-    @RequestMapping(method = RequestMethod.POST, value ="/add-movie")
-    public void addMovie(@RequestBody Movie movie){
-    	topicService.addMovieToDatabase(movie);
-    }
-    // update movie
-    @RequestMapping(method = RequestMethod.PUT, value ="/update-movie/id/{id}")
-    public void updateMovie(@RequestBody Movie movie, @PathVariable int id){
-        topicService.updateMovieInDatabase(id, movie);
-    }
-    // delete movie
-    @RequestMapping(method = RequestMethod.DELETE, value ="/delete-movie/{id}")
-    public void deleteMovie(@PathVariable int id){
-        topicService.deleteMovieByIdFromDatabase(id);
-    }
-    */
     //handles illegal arguments to let the user know
     @ExceptionHandler({IllegalArgumentException.class})
     public ModelAndView argumentError(Exception e, Model model) {
