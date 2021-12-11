@@ -6,6 +6,8 @@
 package com.example.MovieCollection.controller;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
+
+import com.example.MovieCollection.InputValidation;
 import com.example.MovieCollection.Movie;
 import com.example.MovieCollection.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ public class newMovieController {
 			"OUTSTANDING MOTION PICTURE", "OUTSTANDING PRODUCTION", "SOUND RECORDING",
 			"SOUND EDITING", "SOUND MIXING", "SOUND EFFECTS EDITING", "ASSISTANT DIRECTOR",
 			"COSTUME DESIGN", "MAKEUP", "ANIMATED FEATURE FILM", "INTERNATIONAL FEATURE FILM",
-			"FOREIGN LANGUAGE FILM"
+			"FOREIGN LANGUAGE FILM", "ANIMATED FEATURE"
 			};
 	private final static int ORDER_FROM_LATEST = 4671;
 	private final static int MAX_NO_DISPLAY = 10;
@@ -79,7 +81,7 @@ public class newMovieController {
 	//singleton api method
 	@RequestMapping("/singleton/winning/category/{category}/year/{year}")
 	public Movie getSingleMovieWinnerByCategoryAndYear(@PathVariable String category, @PathVariable String year) {
-			category = category.replaceAll("[-_]"," ").toUpperCase();
+			category = InputValidation.categoryLengthValidation(category);
 			for(int i = 0; i < SINGLETON_CATEGORIES.length; i++) {
 				if(category.equals(SINGLETON_CATEGORIES[i])) {
 					List<Movie> temp = topicService.findWinnersByCategoryAndYear(category, year);
