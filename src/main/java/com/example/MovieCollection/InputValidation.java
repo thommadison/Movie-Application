@@ -4,8 +4,8 @@ public class InputValidation {
 	private static final String MIN_CATEGORY_ERROR = "Category cannot be less than 5 characters.";
 	private static final String MIN_TITLE_ERROR = "Title cannot be less than 3 characters.";
 	private static final String RANGE_ERROR = "Starting year cannot be less than ending year";
-	private static final String YEAR_OUTSIDE_RANGE_ERROR = "Input nominated year must be between 1928 to 2020";
-	private static final String MISMATCH_YEAR_ERROR = "Please enter an integer year between 1928 to 2020";
+	private static final String YEAR_OUTSIDE_RANGE_ERROR = "Input nominated year must be between 1980 to 2020";
+	private static final String MISMATCH_YEAR_ERROR = "Please enter an integer year between 1980 to 2020";
 	private static final String ID_ERROR = "ID cannot be less than 1";
 	private static final String MISMATCH_ID_ERROR = "ID must be an integer";
 	private static final int MIN_YEAR_NOMINATED = 1980;
