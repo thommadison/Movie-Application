@@ -104,7 +104,7 @@ html {
 
 input:hover {
     border-width: 1px;
-    box-shadow: 0 0 10px green;
+    box-shadow: 0 0 10px rgb(185, 165, 50);
 }
 
 #form
@@ -149,6 +149,18 @@ input:hover {
     -webkit-text-stroke:  black;
     font-weight: bold;
     font-family: Arial, sans-serif;
+}
+
+.btn-outline-warning
+{
+  border-color:rgb(185, 165, 50);
+  color: rgb(185, 165, 50);
+}
+
+.btn-outline-warning:hover
+{
+  color: white;
+  background-color: rgb(185, 165, 50);
 }
 
 .brlarge {
