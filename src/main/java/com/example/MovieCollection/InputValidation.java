@@ -8,7 +8,7 @@ public class InputValidation {
 	private static final String MISMATCH_YEAR_ERROR = "Please enter an integer year between 1928 to 2020";
 	private static final String ID_ERROR = "ID cannot be less than 1";
 	private static final String MISMATCH_ID_ERROR = "ID must be an integer";
-	private static final int MIN_YEAR_NOMINATED = 1928;
+	private static final int MIN_YEAR_NOMINATED = 1980;
 	private static final int MAX_YEAR_NOMINATED = 2020;
 	//removes - & _ and ensures category length isn't less than 5 characters
 	public static String categoryLengthValidation(String category) throws IllegalArgumentException {

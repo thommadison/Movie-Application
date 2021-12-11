@@ -263,6 +263,7 @@
         </ul>
         <p>* A website page will be displayed with the content (search results, information, etc).</p>
         <p> If you add api/ after awardmovies/, you will only receive the JSON data.</p>
+        <p> (Exceptions are /index and /apiDoc)</p>
         <br>
         <p><b>NOTE:</b> For any paths with curly braces { }, replace the entire portion surrounded by { } (including the curly braces) with an input value.</p>
         <br>
@@ -427,7 +428,7 @@
         <p>This will return a singleton JSON data for movies nominated for a certain award (category) for that year.</p>
         <p>The * categories above are the only award types (category) that will return JSON data.</p>
         <p>Example URL: </p>
-        <p>localhost:8080/awardmovies/singleton/winning/category/animated-featured-film/year/2019</p>
+        <p>localhost:8080/awardmovies/singleton/winning/category/animated-feature-film/year/2019</p>
         <hr>
         <p><b>/api/category/{category}/year/{year}</b></p>
         <p>This will retrieve a collection of JSON data for all the movies nominated for that particular award type (category) on that year ({year}).</p>
