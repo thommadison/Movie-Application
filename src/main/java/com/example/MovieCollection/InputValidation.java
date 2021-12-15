@@ -19,13 +19,15 @@ public class InputValidation {
 	}
 	//ensures title isn't less than 3 characters (replaces all _ with " " in case we ever used that for the path)
 	public static String titleLengthValidation(String title) throws IllegalArgumentException {
+		title = title.replaceAll("_", " ");
 		if(title.length() < 3)
     		throw new IllegalArgumentException(MIN_TITLE_ERROR);
-		return title.replaceAll("_", " ");
+		return title;
 	}
-	public static void dateRangeValidation(int start, int end) throws IllegalArgumentException {
+	public static boolean dateRangeValidation(int start, int end) throws IllegalArgumentException {
 		if(start > end)
     		throw new IllegalArgumentException(RANGE_ERROR);
+		return true;
 	}
 	//returns int after verifying that input year is an integer & within 1980 to 2020
 	public static int yearNominatedValidation(String yearInput) throws IllegalArgumentException {
